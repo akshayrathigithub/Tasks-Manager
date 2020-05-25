@@ -1,14 +1,41 @@
+#TimerDivWrapper{
+  width: 100%;
+  height: 100%;
+}
+#Header{
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3% 0% 1% 0%;
+}
+#Header p{
+  font-size: 36px;
+  color: #d9d9d9;
+}
+#TaskHeader{
+  width: 100%;
+  height: 2.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 0% 1% 0%;
+}
+#TaskHeader p{
+  font-size: 25px;
+  color: #f66fb3;
+}
 #TimerDiv{
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 30rem;
+  display: flex;
+  justify-content: center;
 }
 .Timer {
-  position: absolute;
-  top: 6%;
   width: 480px;
   height: 480px;
-  left: 20%;
 }
 .bg {
   fill: #242c4c;
@@ -26,19 +53,40 @@
 }
 #TimerWrapper{
   position: absolute;
-  top: 41%;
+  top: 37%;
   left: 35%;
   text-align: center;
   color: white;
-
+  width: 18rem;
 }
 #TimerText{
   font-size: 22px;
   color: #d9d9d9;
+  width: 18rem;
 }
 #TimerTime{
   font-size: 4.5rem;
   font-family: 'Assistant', sans-serif;
   color: #f66fb3;
   line-height: 4rem;
+  width: 18rem;
+}
+#BtnRow{
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#BtnWrapper{
+  width: 5rem;
+  height: 4rem;
+  box-shadow: 0px 0px 12px 5px #242c4c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  color: #f66fb3;
+  cursor: pointer;
+  border-radius: 3px;
 }

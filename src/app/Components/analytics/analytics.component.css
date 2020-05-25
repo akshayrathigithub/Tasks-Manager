@@ -1,88 +1,178 @@
-#optionWrapper{
-    width: 100%;
-    height: 100%;
+#optionWrapper {
+  width: 100%;
+  height: 100%;
 }
-#CollectionSelector{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
+.Header {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 0% 2.5% 0%;
 }
-#Weekly{
-    width: 20%;
-    height: 3rem;
-    border-radius: 15px 0px 0px 15px;
-    box-shadow: 0 0 8px 0px #1b2838;
-    border: 2px solid #f66fb3 ;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Header p {
+  font-size: 36px;
+  color: #d9d9d9;
 }
-#Monthly{
-    width: 20%;
-    height: 3rem;
-    box-shadow: 0 0 8px 0px #1b2838;
-    border: 2px solid #f66fb3 ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#CollectionSelector {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #fff;
 }
-#Yearly{
-    width: 20%;
-    height: 3rem;
-    border-radius: 0px 15px 15px 0px;
-    box-shadow: 0 0 8px 0px #1b2838;
-    border: 2px solid #f66fb3 ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#Weekly {
+  width: 20%;
+  height: 3rem;
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: 0 0 8px 0px #1b2838;
+  border: 2px solid #f66fb3;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-#TasksWrapper{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 15px;
+#Monthly {
+  width: 20%;
+  height: 3rem;
+  box-shadow: 0 0 8px 0px #1b2838;
+  /* border: 2px solid #f66fb3; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-#TaskCard{
-    width: 25%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 10px 0px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
+#Yearly {
+  width: 20%;
+  height: 3rem;
+  border-radius: 0px 15px 15px 0px;
+  box-shadow: 0 0 8px 3px #1b2838;
+  /* border: 2px solid #f66fb3; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-#TaskCard #Icon{
-    width: 30%;
-    height: 100%;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#TasksWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 4%;
 }
-#TaskCard #Info{
-    width: 70%;
-    height: 100%;
-    text-align: center;
+#TaskCard {
+  width: 25%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 12px 3px #1b2838;
+  border-radius: 10px;
+  /* border: 2px solid #f66fb3; */
+  color: #f66fb3;
+  margin-right: 5%;
 }
-#Header{
-    margin-top: 15px;
+#TaskCard #Icon {
+  width: 30%;
+  height: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#Text{
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
+#TaskCard #Info {
+  width: 70%;
+  height: 100%;
+  text-align: center;
 }
-#ChartWrapper{
-    width: 80%;
-    height: 55%;
-    margin: 3% 0% 0% 5%;
+#Header {
+  margin-top: 15px;
+}
+#Text {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #fff;
+}
+#BigWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#ChartWrapper {
+  width: 80%;
+  margin: 3% 0% 0% 5%;
+}
+#ChartOption {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+#ChartOption div {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  /* border: 2px solid #f66fb3; */
+  box-shadow: 0 0 10px 3px #1b2838;
+  font-size: 20px;
+  color: #fff;
+  margin-right: 15px;
+  cursor: pointer;
+}
+#DropDownWrapper {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5px;
+}
+#DropDown {
+  width: 6.5rem;
+  height: 2.5rem;
+  border-radius: 5px 5px 0px 0px;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -5px 8px 0px #1b2838;
+  z-index: 0;
+  color: #fff;
+  cursor: pointer;
+}
+#DropDownItems {
+  width: 6.5rem;
+  height: 7.2rem;
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: 0px 5px 10px 0px #1b2838;
+  z-index: 1;
+}
+.items {
+  width: 100%;
+  height: 2.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  transition: display 0.5s ease-in-out;
+}
+.items:hover {
+  border: 2px solid #f66fb3;
+  color: #f66fb3;
+}
+#DropDownWrapper .fas {
+  margin-right: 9px;
+  font-size: 20px;
+  margin-top: 4px;
 }

@@ -43,9 +43,6 @@
     </div>
     <div class="Card">
         <div class="Display">
-            <div class="Header">
-                <p>Create new task</p>
-            </div>
             <div [ngSwitch]="Component">
                 <div *ngSwitchCase="'Timer'"><app-timer [Timer]="DisplayTimer"></app-timer></div>
                 <div *ngSwitchCase="'Task'"><app-todo (task)="Component=$event" [Timer]="DisplayTimer" ></app-todo></div>

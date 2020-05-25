@@ -13,7 +13,6 @@ export class AnalyticsComponent implements OnInit {
     const myChart = new Chart('myChart', {
       type: 'doughnut',
       data: {
-        labels: ['Red', 'Blue', 'Yellow'],
         datasets: [
           {
             label: '# of Votes',

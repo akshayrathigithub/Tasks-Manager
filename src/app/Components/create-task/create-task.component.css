@@ -1,9 +1,21 @@
 #Content{
-  margin-top: 3rem;
+  width: 100%;
+  height: 100%;
+}
+.Header {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 0% 2.5% 0%;
+}
+.Header p {
+  font-size: 36px;
+  color: #d9d9d9;
 }
 .TaskWrapper {
   width: 45rem;
-  /* background-color: red; */
 }
 .TaskWrapper input {
   border: none;

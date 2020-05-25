@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
-import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-timer',
@@ -9,9 +8,11 @@ import { TaskService } from 'src/app/services/task.service';
 export class TimerComponent implements OnInit, OnChanges {
   @Input() Timer: any
   ringStroke:string;
-  constructor(private TaskArr: TaskService) {
+  TaskName: string
+  constructor() {
   }
   ngOnInit(): void {
+    this.TaskName = this.Timer.task
   }
   ngOnChanges(changes: SimpleChanges) {
     this.ringStroke = Math.floor(3.15*this.Timer.ring) + 'px, 315px'
