@@ -49,6 +49,7 @@
                 <div *ngSwitchCase="'NoTaskFound'"><app-header (task)="Component=$event"></app-header></div>
                 <div *ngSwitchCase="'CreateTask'"><app-create-task></app-create-task></div>
                 <div *ngSwitchCase="'Analytics'"><app-analytics></app-analytics></div>
+                <div *ngSwitchCase="'PrevTasks'"><app-prev-tasks></app-prev-tasks></div>
                 <div *ngSwitchDefault><app-create-task></app-create-task></div>
             </div>
         </div>
@@ -70,6 +71,12 @@
                 <div class="Border"></div>
                 <div class="Text">
                     <p>Analytics</p>
+                </div>
+            </div>
+            <div [ngClass]="Component === 'PrevTasks' ? 'ControlBtn Active' : 'ControlBtn'" (click)="Clicked('PrevTasks')">
+                <div class="Border"></div>
+                <div class="Text">
+                    <p>Previous Tasks</p>
                 </div>
             </div>
         </div>

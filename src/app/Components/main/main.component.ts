@@ -35,7 +35,7 @@ export class MainComponent implements OnInit {
     if (this.Tasks.length === 0) {
       this.Component = 'NoTaskFound';
     } else {
-      this.Component = 'Analytics';
+      this.Component = 'PrevTasks';
     }
   }
   TimeRemaining(Task: string) {

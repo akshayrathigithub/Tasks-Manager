@@ -1,0 +1,44 @@
+<div>
+    <div class="Header">
+        <p>Previous Tasks List</p>
+    </div>
+    <div [ngStyle]="{
+        'display': 'grid',
+        'width': '100%',
+        'grid-template-rows': 'repeat('+ Rows +', 3.5rem)',
+        'grid-template-columns': 'repeat(4, 1fr)',
+        'padding': '1rem 0.5rem 0rem 0.5rem',
+        'row-gap': '2.5px'
+    }">
+        <div class="Head">
+            <div class="first">
+                <p>Task Name</p>
+            </div>
+            <div class="second">
+                <p>Priority</p>
+            </div>
+            <div class="third">
+                <p>Date</p>
+            </div>
+            <div class="four">
+                <p>Time</p>
+            </div>
+        </div>
+        <div *ngFor="let task of prevTasks; index as i;" [style.grid-area]="Span(i)" class="TaskWrapper" >
+            <div class="first">
+                <div [class]="task.status ? 'completed': 'incompleted'"></div>
+                <p> {{ task.name }} </p>
+            </div>
+            <div class="second">
+                <i [class]="task.priority"></i>
+            </div>
+            <div class="third" >
+                <p>{{task.date}}</p>
+            </div>
+            <div class="four">
+                <p [style.color]="'#f66fb3'">{{ task.totalTime }}</p>
+                <i [class]="task.active ? 'fas fa-check' : 'fas fa-trash'" id="Check"></i>
+            </div>
+        </div>
+    </div>
+</div>

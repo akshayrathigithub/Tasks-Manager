@@ -9,7 +9,8 @@ import { TimerComponent } from './Components/timer/timer.component';
 import { CreateTaskComponent } from './Components/create-task/create-task.component';
 import { MainComponent } from './Components/main/main.component';
 import { FormsModule} from '@angular/forms';
-import { AnalyticsComponent } from './Components/analytics/analytics.component'
+import { AnalyticsComponent } from './Components/analytics/analytics.component';
+import { PrevTasksComponent } from './Components/prev-tasks/prev-tasks.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AnalyticsComponent } from './Components/analytics/analytics.component'
     TimerComponent,
     CreateTaskComponent,
     MainComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    PrevTasksComponent
   ],
   imports: [
     BrowserModule,
