@@ -1,0 +1,62 @@
+<div id="Content">
+    <div class="TaskWrapper">
+        <p class="text">Name</p>
+        <input type="text" placeholder="Add Task" [(ngModel)] = "taskName" >
+    </div>
+    <div class="TaskWrapper">
+        <p class="text">Time</p>
+        <div class="SetTimer">
+            <div [ngClass]=" Btn === 'Hour_1' ? 'timerLayout active' : 'timerLayout'" (click)="BtnSelector('Hour_1')">
+                <p>{{H_1}}</p>
+            </div>
+            <div [ngClass]=" Btn === 'Hour_2' ? 'timerLayout active' : 'timerLayout'" (click)="BtnSelector('Hour_2')">
+                <p>{{H_2}}</p>
+            </div>
+            <div class="colon">
+                <div class="Ucolon"></div>
+                <div class="Dcolon"></div>
+            </div>
+            <div [ngClass]=" Btn === 'Min_1' ? 'timerLayout active' : 'timerLayout'" (click)="BtnSelector('Min_1')">
+                <p>{{M_1}}</p>
+            </div>
+            <div [ngClass]=" Btn === 'Min_2' ? 'timerLayout active' : 'timerLayout'" (click)="BtnSelector('Min_2')">
+                <p>{{M_2}}</p>
+            </div>
+            <div class="colon">
+                <div class="Ucolon"></div>
+                <div class="Dcolon"></div>
+            </div>
+            <div [ngClass]=" Btn === 'Sec_1' ? 'timerLayout active' : 'timerLayout'" (click)="BtnSelector('Sec_1')">
+                <p>{{S_1}}</p>
+            </div>
+            <div [ngClass]=" Btn === 'Sec_2' ? 'timerLayout active' : 'timerLayout'" (click)="BtnSelector('Sec_2')">
+                <p>{{S_2}}</p>
+            </div>
+            <div class="BtnLayout plus" (click)="Increased()">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="BtnLayout" (click)="Decreased()">
+                <i class="fas fa-minus"></i>
+            </div>
+        </div>
+    </div>
+    <div class="TaskWrapper">
+        <p class="text">Priority</p>
+        <div class="SetPriority">
+            <div [class]="PriorityVar === 'Normal' ? 'PriorityLayout active' : 'PriorityLayout'" (click)="PrioritySelector('Normal')" >
+                <i class="fas fa-arrow-alt-circle-right"></i>
+            </div>
+            <div [ngClass]="PriorityVar === 'Low' ? 'PriorityLayout active' : 'PriorityLayout'" (click)="PrioritySelector('Low')">
+                <i class="fas fa-arrow-alt-circle-down"></i>
+            </div>
+            <div [ngClass]="PriorityVar === 'High' ? 'PriorityLayout active' : 'PriorityLayout'" (click)="PrioritySelector('High')">
+                <i class="fas fa-arrow-alt-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="BtnWrapper">
+        <div (click)="Submit()" class="BtnFinish">
+            <p>Finish</p>
+        </div>
+    </div>
+</div>

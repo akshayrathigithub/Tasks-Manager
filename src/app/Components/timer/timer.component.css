@@ -1,0 +1,44 @@
+#TimerDiv{
+  position: relative;
+  width: 90%;
+  height: 30rem;
+}
+.Timer {
+  position: absolute;
+  top: 6%;
+  width: 480px;
+  height: 480px;
+  left: 20%;
+}
+.bg {
+  fill: #242c4c;
+  paint-order: fill;
+  fill-opacity: 1;
+}
+.ring {
+  stroke: #f66fb3;
+  stroke-width: 10;
+  paint-order: stroke;
+  fill-opacity: 0;
+  stroke-dasharray: 200px, 300px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+}
+#TimerWrapper{
+  position: absolute;
+  top: 41%;
+  left: 35%;
+  text-align: center;
+  color: white;
+
+}
+#TimerText{
+  font-size: 22px;
+  color: #d9d9d9;
+}
+#TimerTime{
+  font-size: 4.5rem;
+  font-family: 'Assistant', sans-serif;
+  color: #f66fb3;
+  line-height: 4rem;
+}

@@ -1,0 +1,36 @@
+<div id="TimerDiv">
+    <svg class="Timer" viewBox="420 250 550 500" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px">
+        <g transform="matrix(4.900000095367432, 0, 0, 4.900000095367432, -2494.800048828125, 19.60000801086423)">
+            <g id="g-1" transform="matrix(1, 0, 0, 1, 0, 0)">
+                <g id="g-2">
+                    <path class="bg" d="M652,46c27.6,0,50,22.4,50,50s-22.4,50-50,50s-50-22.4-50-50S624.4,46,652,46z" />
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(4.498438358306885, 0, 0, 4.498438358306885, -2232.98193359375, 58.14992154358025)">
+            <g id="g-5" transform="matrix(1, 0, 0, 1, 0, 0)">
+                <g id="g-6">
+                    <path class="ring" d="M652,46c27.6,0,50,22.4,50,50s-22.4,50-50,50s-50-22.4-50-50S624.4,46,652,46z"
+                        [ngStyle]="
+                        {
+                            'stroke': '#f66fb3',
+                            'stroke-width': '10',
+                            'paint-order': 'stroke',
+                            'fill-opacity': '0',
+                            'stroke-dasharray': ringStroke,
+                            'stroke-dashoffset': '0px',
+                            'stroke-linecap': 'round'
+                        }" />
+                </g>
+            </g>
+        </g>
+    </svg>
+    <div id="TimerWrapper">
+        <div id="TimerText">
+            <p>time remaining</p>
+        </div>
+        <div id="TimerTime">
+            <p>{{ Timer.timer }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div>
+    <!-- <div class="ModalWrapper">
+        <div class="ModalInitial">
+            <div class="Icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="ModalClose"><i class="fas fa-times-circle"></i></div>
+            <div class="ModalHeader">
+                <p>Have You Completed The Task ?</p>
+                <div class="ModalText">
+                    <p>Proceding will terminate this task and mark it with the status of Completion. You cannot resume it again.</p>
+                </div>
+                <div class="ModalBtn">
+                    <p>Done!</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="ModalWrapper">
+        <div class="ModalInitial">
+            <div class="Icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="ModalClose"><i class="fas fa-times-circle"></i></div>
+            <div class="ModalHeader">
+                <p>Do you wants to Delete this Task ?</p>
+                <div class="ModalText">
+                    <p>Proceding will delete this task from Database. You cannot recover it again.</p>
+                </div>
+                <div class="ModalBtn">
+                    <p>Done!</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="SvgBg">
+        <svg id="artboard" viewBox="0 0 1400 980" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            style="enable-background:new 0 0 336 235.2;" width="1400px" height="980px">
+            <path
+                d="M 215.9263458251953 306.30609130859375 C 215.9263458251953 306.30609130859375 678.388916015625 5.8227996826171875 995.304931640625 149.02186584472656 C 1312.220947265625 292.22093200683594 1404.9483642578125 491.76068115234375 1254.7066650390625 708.9067993164062 C 1104.4649658203125 926.0529174804688 737.0771484375 1079.81591796875 311.00115966796875 835.6732177734375 C -115.0748291015625 591.530517578125 217.10011291503906 305.13232421875 215.9263458251953 306.30609130859375 Z"
+                style="fill: #F66FB3; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1; stroke-width: 0; paint-order: stroke;" />
+        </svg>
+    </div>
+    <div class="Card">
+        <div class="Display">
+            <div class="Header">
+                <p>Create new task</p>
+            </div>
+            <div [ngSwitch]="Component">
+                <div *ngSwitchCase="'Timer'"><app-timer [Timer]="DisplayTimer"></app-timer></div>
+                <div *ngSwitchCase="'Task'"><app-todo (task)="Component=$event" [Timer]="DisplayTimer" ></app-todo></div>
+                <div *ngSwitchCase="'NoTaskFound'"><app-header (task)="Component=$event"></app-header></div>
+                <div *ngSwitchCase="'CreateTask'"><app-create-task></app-create-task></div>
+                <div *ngSwitchCase="'Analytics'"><app-analytics></app-analytics></div>
+                <div *ngSwitchDefault><app-create-task></app-create-task></div>
+            </div>
+        </div>
+        
+        <div class="Controller">
+            <div [ngClass]="Component === 'Task' ? 'ControlBtn Active' : 'ControlBtn'" (click)="Clicked('Task')">
+                <div class="Border"></div>
+                <div class="Text">
+                    <p>Tasks</p>
+                </div>
+            </div>
+            <div [ngClass]="Component === 'Timer' ? 'ControlBtn Active' : 'ControlBtn'" (click)="Clicked('Timer')">
+                <div class="Border"></div>
+                <div class="Text">
+                    <p>Timer</p>
+                </div>
+            </div>
+            <div [ngClass]="Component === 'Analytics' ? 'ControlBtn Active' : 'ControlBtn'" (click)="Clicked('Analytics')">
+                <div class="Border"></div>
+                <div class="Text">
+                    <p>Analytics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

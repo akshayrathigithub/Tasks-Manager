@@ -1,0 +1,88 @@
+#optionWrapper{
+    width: 100%;
+    height: 100%;
+}
+#CollectionSelector{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: #fff;
+}
+#Weekly{
+    width: 20%;
+    height: 3rem;
+    border-radius: 15px 0px 0px 15px;
+    box-shadow: 0 0 8px 0px #1b2838;
+    border: 2px solid #f66fb3 ;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Monthly{
+    width: 20%;
+    height: 3rem;
+    box-shadow: 0 0 8px 0px #1b2838;
+    border: 2px solid #f66fb3 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Yearly{
+    width: 20%;
+    height: 3rem;
+    border-radius: 0px 15px 15px 0px;
+    box-shadow: 0 0 8px 0px #1b2838;
+    border: 2px solid #f66fb3 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#TasksWrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 15px;
+}
+#TaskCard{
+    width: 25%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 10px 0px #1b2838;
+    border-radius: 10px;
+    /* border: 2px solid #f66fb3; */
+    color: #f66fb3;
+}
+#TaskCard #Icon{
+    width: 30%;
+    height: 100%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#TaskCard #Info{
+    width: 70%;
+    height: 100%;
+    text-align: center;
+}
+#Header{
+    margin-top: 15px;
+}
+#Text{
+    margin-top: 6px;
+    font-weight: 600;
+    color: #fff;
+}
+#ChartWrapper{
+    width: 80%;
+    height: 55%;
+    margin: 3% 0% 0% 5%;
+}

@@ -1,0 +1,65 @@
+#empty-artboard {
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  width: 650px;
+  height: 550px;
+}
+.fa-image {
+  width: 52px;
+  height: 56px;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+.Msg{
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 21%;
+}
+.Msg .Head {
+    text-align: center;
+}
+.Msg .Head .fa-images{
+    font-size: 45px;
+    margin-top: 15px;
+    color: white;
+}
+.Msg .Head p{
+    font-size: 18px;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #F0F0F0;
+}
+.Msg .text{
+    display: inline-block;
+    color: #F0F0F0;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 0rem 2.5rem;
+    text-align: center;
+}
+.Msg .AddBtn{
+    width: 9rem;
+    height: 2.5rem;
+    background-color: #F66FB3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #F0F0F0;
+    margin-top: 25px;
+    cursor: pointer;
+}
+.Msg .AddBtn p{
+    margin-left: 6px;
+    font-weight: 600;
+    font-size: 15px;
+}
