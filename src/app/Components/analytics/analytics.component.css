@@ -23,38 +23,24 @@
   flex-direction: row;
   color: #fff;
 }
-#Weekly {
+.Selector{
   width: 20%;
   height: 3rem;
-  border-radius: 15px 0px 0px 15px;
   box-shadow: 0 0 8px 0px #1b2838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Weekly {
+  border-radius: 15px 0px 0px 15px;
+}
+.Yearly {
+  border-radius: 0px 15px 15px 0px;
+}
+.SelectorActive{
   border: 2px solid #f66fb3;
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-#Monthly {
-  width: 20%;
-  height: 3rem;
-  box-shadow: 0 0 8px 0px #1b2838;
-  /* border: 2px solid #f66fb3; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-#Yearly {
-  width: 20%;
-  height: 3rem;
-  border-radius: 0px 15px 15px 0px;
-  box-shadow: 0 0 8px 3px #1b2838;
-  /* border: 2px solid #f66fb3; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }
 #TasksWrapper {
   width: 100%;
@@ -115,19 +101,22 @@
   margin-top: 20px;
   padding-right: 10px;
 }
-#ChartOption div {
+.chartWrapper {
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  /* border: 2px solid #f66fb3; */
   box-shadow: 0 0 10px 3px #1b2838;
   font-size: 20px;
-  color: #fff;
   margin-right: 15px;
   cursor: pointer;
+  color: #fff;
+}
+.chartactive{
+  border: 2px solid #f66fb3;
+  color: #f66fb3;
 }
 #DropDownWrapper {
   width: 20%;
@@ -135,26 +124,6 @@
   align-items: center;
   flex-direction: column;
   margin-top: 5px;
-}
-#DropDown {
-  width: 6.5rem;
-  height: 2.5rem;
-  border-radius: 5px 5px 0px 0px;
-  margin-top: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 -5px 8px 0px #1b2838;
-  z-index: 0;
-  color: #fff;
-  cursor: pointer;
-}
-#DropDownItems {
-  width: 6.5rem;
-  height: 7.2rem;
-  border-radius: 0px 0px 5px 5px;
-  box-shadow: 0px 5px 10px 0px #1b2838;
-  z-index: 1;
 }
 .items {
   width: 100%;
@@ -176,3 +145,4 @@
   font-size: 20px;
   margin-top: 4px;
 }
+

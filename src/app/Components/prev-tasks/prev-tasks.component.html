@@ -2,6 +2,49 @@
     <div class="Header">
         <p>Previous Tasks List</p>
     </div>
+    <div class="SearchWrapper">
+        <div id="InputWrapper">
+            <input type="text" placeholder="Search Task" [(ngModel)]="SearchedTaskName">
+        </div>
+        <div id="DropDownWrapper">
+            <div (click)="DropDownClicked()" [ngStyle]="{
+                'width': '6.5rem',
+                'height': '2.5rem',
+                'min-height': '2.5rem',
+                'border-radius': '5px 5px 0px 0px',
+                'box-shadow': toggle ? '0px -5px 10px 0px #1b2838' : '0 0px 8px 0px #1b2838',
+                'z-index': 1,
+                'display': 'flex',
+                'justify-content': 'center',
+                'align-items': 'center',
+                'color': '#fff',
+                'cursor': 'pointer' }">
+                <div><i class="fas fa-chevron-down"></i></div>
+                <div>Filter</div>
+            </div>
+            <div [ngStyle]="{'width': '6.5rem',
+                'height': '7.2rem',
+                'border-radius': '0px 0px 5px 5px',
+                'box-shadow': '0px 5px 10px 0px #1b2838',
+                'z-index': toggle ? 1 : 0,
+                'display': toggle ? 'initial': 'none',
+                'background-color': '#2c3c56'
+            }">
+                <div class="items">
+                    <div><i class="fas fa-arrow-alt-circle-right"></i></div>
+                    <div>Normal</div>
+                </div>
+                <div class="items">
+                    <div><i class="fas fa-arrow-alt-circle-up"></i></div>
+                    <div>High</div>
+                </div>
+                <div class="items">
+                    <div><i class="fas fa-arrow-alt-circle-down"></i></div>
+                    <div>Low</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div [ngStyle]="{
         'display': 'grid',
         'width': '100%',
@@ -24,7 +67,7 @@
                 <p>Time</p>
             </div>
         </div>
-        <div *ngFor="let task of prevTasks; index as i;" [style.grid-area]="Span(i)" class="TaskWrapper" >
+        <div *ngFor="let task of prevTasks; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
             <div class="first">
                 <div [class]="task.status ? 'completed': 'incompleted'"></div>
                 <p> {{ task.name }} </p>
@@ -32,12 +75,12 @@
             <div class="second">
                 <i [class]="task.priority"></i>
             </div>
-            <div class="third" >
+            <div class="third">
                 <p>{{task.date}}</p>
             </div>
             <div class="four">
-                <p [style.color]="'#f66fb3'">{{ task.totalTime }}</p>
-                <i [class]="task.active ? 'fas fa-check' : 'fas fa-trash'" id="Check"></i>
+                <p [style.color]="'#bbb2cf'">{{ task.totalTime }}</p>
+                <i class="fas fa-trash" id="Check"></i>
             </div>
         </div>
     </div>

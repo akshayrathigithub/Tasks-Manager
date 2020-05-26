@@ -11,6 +11,8 @@ export class PrevTasksComponent implements OnInit {
   prevTasks: any ;
   Rows: number
   ActiveTask: string = ''
+  SearchedTaskName: string
+  toggle: boolean = false
   constructor(private PrevTasksArr: PrevTasksService) { }
 
   ngOnInit(): void {
@@ -19,5 +21,8 @@ export class PrevTasksComponent implements OnInit {
   }
   Span(index: number){
     return `${index+2}/1/${index+3}/5`
+  }
+  DropDownClicked(){
+    this.toggle = !this.toggle
   }
 }

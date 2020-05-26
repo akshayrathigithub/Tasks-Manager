@@ -8,7 +8,9 @@ import { Chart } from 'chart.js';
 })
 export class AnalyticsComponent implements OnInit {
   constructor() {}
-
+  Selector: string = 'Weekly'
+  toggle: boolean = false
+  ChartSelector: string = "doughnut"
   ngOnInit(): void {
     const myChart = new Chart('myChart', {
       type: 'doughnut',
@@ -41,5 +43,14 @@ export class AnalyticsComponent implements OnInit {
       //     }
       // }
     });
+  }
+  SelectorCalled(name: string){
+    this.Selector = name
+  }
+  ChartSelectorCalled(name: string){
+    this.ChartSelector = name
+  }
+  DropDownClicked(){
+    this.toggle = !this.toggle
   }
 }
