@@ -19,8 +19,8 @@
                 'align-items': 'center',
                 'color': '#fff',
                 'cursor': 'pointer' }">
-                <div><i class="fas fa-chevron-down"></i></div>
-                <div>Filter</div>
+                <div><i [class]="FilterIcon"></i></div>
+                <div>{{FilterStatus}}</div>
             </div>
             <div [ngStyle]="{'width': '6.5rem',
                 'height': '7.2rem',
@@ -30,18 +30,18 @@
                 'display': toggle ? 'initial': 'none',
                 'background-color': '#2c3c56'
             }">
-                <div class="items">
-                    <div><i class="fas fa-arrow-alt-circle-right"></i></div>
-                    <div>Normal</div>
-                </div>
-                <div class="items">
-                    <div><i class="fas fa-arrow-alt-circle-up"></i></div>
-                    <div>High</div>
-                </div>
-                <div class="items">
-                    <div><i class="fas fa-arrow-alt-circle-down"></i></div>
-                    <div>Low</div>
-                </div>
+            <div class="items" (click)="SetFilterStatus('Normal','fas fa-arrow-alt-circle-right')">
+                <div><i class="fas fa-arrow-alt-circle-right"></i></div>
+                <div>Normal</div>
+            </div>
+            <div class="items" (click)="SetFilterStatus('High','fas fa-arrow-alt-circle-up')">
+                <div><i class="fas fa-arrow-alt-circle-up"></i></div>
+                <div>High</div>
+            </div>
+            <div class="items" (click)="SetFilterStatus('Low','fas fa-arrow-alt-circle-down')">
+                <div><i class="fas fa-arrow-alt-circle-down"></i></div>
+                <div>Low</div>
+            </div>
             </div>
         </div>
     </div>

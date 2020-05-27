@@ -13,6 +13,9 @@ export class PrevTasksComponent implements OnInit {
   ActiveTask: string = ''
   SearchedTaskName: string
   toggle: boolean = false
+  FilterStatus: string = "Filter"
+  FilterIcon: string = "fas fa-chevron-down"
+  
   constructor(private PrevTasksArr: PrevTasksService) { }
 
   ngOnInit(): void {
@@ -23,6 +26,11 @@ export class PrevTasksComponent implements OnInit {
     return `${index+2}/1/${index+3}/5`
   }
   DropDownClicked(){
+    this.toggle = !this.toggle
+  }
+  SetFilterStatus(filter: string, icon: string){
+    this.FilterStatus = filter
+    this.FilterIcon = icon
     this.toggle = !this.toggle
   }
 }

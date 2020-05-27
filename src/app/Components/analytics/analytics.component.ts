@@ -11,6 +11,8 @@ export class AnalyticsComponent implements OnInit {
   Selector: string = 'Weekly'
   toggle: boolean = false
   ChartSelector: string = "doughnut"
+  FilterStatus: string = "Filter"
+  FilterIcon: string = "fas fa-chevron-down"
   ngOnInit(): void {
     const myChart = new Chart('myChart', {
       type: 'doughnut',
@@ -51,6 +53,11 @@ export class AnalyticsComponent implements OnInit {
     this.ChartSelector = name
   }
   DropDownClicked(){
+    this.toggle = !this.toggle
+  }
+  SetFilterStatus(filter: string, icon: string){
+    this.FilterStatus = filter
+    this.FilterIcon = icon
     this.toggle = !this.toggle
   }
 }
