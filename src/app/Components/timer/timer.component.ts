@@ -10,6 +10,7 @@ export class TimerComponent implements OnInit, OnChanges {
   ringStroke:string;
   TaskName: string
   constructor() {
+    console.log("Timer Component Called")
   }
   ngOnInit(): void {
     this.TaskName = this.Timer.task

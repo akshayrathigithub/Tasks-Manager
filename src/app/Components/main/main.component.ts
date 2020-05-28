@@ -28,13 +28,14 @@ export class MainComponent implements OnInit {
     this.TOTALSEC = this.TimeService.getSeconds(this.TOTALSEC)
     this.TotalSec = this.TOTALSEC
     this.TimeRemaining(task.name);
+    console.log("Main Component Called")
   }
   ngOnInit(): void {
     this.Tasks = this.TaskArr.getTasks();
     if (this.Tasks.length === 0) {
       this.Component = 'NoTaskFound';
     } else {
-      this.Component = 'PrevTasks';
+      this.Component = 'Task';
     }
   }
   TimeRemaining(Task: string) {

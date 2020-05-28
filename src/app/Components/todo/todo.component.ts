@@ -14,7 +14,9 @@ export class TodoComponent implements OnInit {
   PopClass: boolean = false
   @Output() task = new EventEmitter()
   @Input() Timer: any
-  constructor(private TaskArr: TaskService) { }
+  constructor(private TaskArr: TaskService) { 
+    console.log("Todo Component Called")
+  }
 
   ngOnInit(): void {
     this.Tasks = this.TaskArr.getTasks()

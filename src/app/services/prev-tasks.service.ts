@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class PrevTasksService {
 
-  constructor() { }
+  constructor() { 
+    console.log("Prev-Task.service Called")
+  }
   prevTasksList: any = [{
     name: 'Task1',
     priority: 'fas fa-arrow-alt-circle-right',
