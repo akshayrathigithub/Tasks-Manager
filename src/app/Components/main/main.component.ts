@@ -16,21 +16,20 @@ export class MainComponent implements OnInit {
     task: string;
     timer: string;
     id: number;
-    status: boolean
+    status: boolean;
   } = {
     ring: 0,
-    task: "Please Select task from task list",
-    timer: "00:00:00",
+    task: 'Please Select task from task list',
+    timer: '00:00:00',
     id: -1,
-    status: false
+    status: false,
   };
   TOTALSEC: any;
   Part: number = 0;
   TotalSec: number;
-  Hours: number = 0;
-  Minutes: number = 0;
-  Seconds: number = 0;
-  Status: boolean
+  Status: boolean;
+  IsBlur: boolean = false;
+  ModalSelector: string = '';
 
   Clicked(Name: string) {
     this.Component = Name;
@@ -40,25 +39,29 @@ export class MainComponent implements OnInit {
     private TimeService: ConvertTimeService
   ) {
     this.TaskArr.Task$.subscribe((res: Task) => {
-      this.Status = res.active
+      this.Status = res.active;
       this.TOTALSEC = res.totalTime;
       this.TOTALSEC = this.TimeService.getSeconds(this.TOTALSEC);
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
       this.TimeRemaining(res);
     });
+    this.TaskArr.PopUp$.subscribe(modal =>{
+      this.ModalSelector = modal
+      this.IsBlur = !this.IsBlur
+    })
   }
   ngOnInit(): void {
     this.Tasks = this.TaskArr.getTasks();
     if (this.Tasks.length === 0) {
       this.Component = 'NoTaskFound';
     } else {
-      this.Component = 'Timer';
+      this.Component = 'Task';
     }
   }
   TimeRemaining(task: Task) {
-    if(this.Status){
+    if (this.Status) {
       this.TotalSec = this.TotalSec - 1;
-    }else{
+    } else {
       this.TotalSec = this.TotalSec;
     }
     this.Part = Math.floor((this.TotalSec / this.TOTALSEC) * 100);
@@ -69,10 +72,14 @@ export class MainComponent implements OnInit {
       timer: time,
       task: task.name,
       id: task.index,
-      status: task.active
+      status: task.active,
     };
-    if(this.Status){
+    if (this.Status) {
       if (this.TotalSec === 0 || !this.Status) {
+        if (this.TotalSec === 0) {
+          this.ModalSelector = 'TimeLimitCompleted';
+          this.IsBlur = true;
+        }
         console.log('Completed');
       } else {
         setTimeout(() => {
@@ -80,6 +87,9 @@ export class MainComponent implements OnInit {
         }, 1000);
       }
     }
- 
+  }
+  PopUpModal() {
+    this.ModalSelector = '';
+    this.IsBlur = !this.IsBlur;
   }
 }

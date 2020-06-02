@@ -14,8 +14,11 @@ export class AnalyticsComponent implements OnInit {
   FilterStatus: string = "Filter"
   FilterIcon: string = "fas fa-chevron-down"
   ngOnInit(): void {
+    this.Chart(this.ChartSelector)
+  }
+  Chart(chart: string){
     const myChart = new Chart('myChart', {
-      type: 'doughnut',
+      type: chart,
       data: {
         datasets: [
           {
@@ -35,15 +38,15 @@ export class AnalyticsComponent implements OnInit {
           },
         ],
       },
-      // options: {
-      //     scales: {
-      //         yAxes: [{
-      //             ticks: {
-      //                 beginAtZero: true
-      //             }
-      //         }]
-      //     }
-      // }
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
     });
   }
   SelectorCalled(name: string){
@@ -51,6 +54,8 @@ export class AnalyticsComponent implements OnInit {
   }
   ChartSelectorCalled(name: string){
     this.ChartSelector = name
+    console.log(this.ChartSelector)
+    this.Chart(this.ChartSelector)
   }
   DropDownClicked(){
     this.toggle = !this.toggle

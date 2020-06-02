@@ -50,4 +50,7 @@ export class TodoComponent implements OnInit {
   SetActiveTask(taskname: string, id: number){
     this.ActiveTask = taskname
   }
+  ModalCalled(icon: any){
+    this.TaskArr.ModalSelector(icon.attributes[2].value)
+  }
 }

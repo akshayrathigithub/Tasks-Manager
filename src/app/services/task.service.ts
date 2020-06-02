@@ -42,6 +42,8 @@ export class TaskService {
   ];
   TaskSubject = new Subject<object>();
   Task$ = this.TaskSubject.asObservable();
+  PopUpSubject = new Subject<string>();
+  PopUp$ = this.PopUpSubject.asObservable();
   taskToTimer: Task = this.task[0];
 
   ActiveTask: {
@@ -74,5 +76,12 @@ export class TaskService {
     this.ActiveTask.taskid = id
     this.ActiveTask.status = !status
     this.TaskSubject.next(this.taskToTimer);
+  }
+  ModalSelector(modal: string){
+    if(modal = 'fas fa-check'){
+      this.PopUpSubject.next('CompleteTask')
+    }else{
+      this.PopUpSubject.next('RemoveTask')
+    }
   }
 }
