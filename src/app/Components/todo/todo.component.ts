@@ -15,7 +15,6 @@ export class TodoComponent implements OnInit {
   @Output() task = new EventEmitter()
   @Input() Timer: any
   constructor(private TaskArr: TaskService) { 
-    console.log("Todo Component Called")
   }
 
   ngOnInit(): void {
@@ -28,12 +27,16 @@ export class TodoComponent implements OnInit {
   Span(index: number){
     return `${index+2}/1/${index+3}/5`
   }
-  SetTime(id: number, time: string){
-    let task = this.TaskArr.getTasks()
-    if(!task[id].active){
-      this.PopUp(0)
+  SetTime(id: number, time: string, status: boolean){
+    let task = this.TaskArr.getActiveTask()
+    if(task.status){
+      if(task.taskid === id){
+        this.TaskArr.TaskSelector(id, time, status)
+      }else{
+        this.PopUp(0)
+      }
     }else{
-      this.TaskArr.TaskSelector(id, time)
+      this.TaskArr.TaskSelector(id, time='0', status)
     }
   }
   PopUp(I: number){

@@ -1,54 +1,78 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../modules/taskModule';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-  task: Task[] = [{
-    name: 'Task1',
-    priority: 'fas fa-arrow-alt-circle-right',
-    totalTime: '00:12:50',
-    leftTime: '0',
-    active: true
-  },{
-    name: 'Task2',
-    priority: 'fas fa-arrow-alt-circle-right',
-    totalTime: '01:12:50',
-    leftTime: '0',
-    active: false
-  },{
-    name: 'Task3',
-    priority: 'fas fa-arrow-alt-circle-right',
-    totalTime: '01:12:50',
-    leftTime: '0',
-    active: false
-  },{
-    name: 'Task4',
-    priority: 'fas fa-arrow-alt-circle-right',
-    totalTime: '01:12:50',
-    leftTime: '0',
-    active: false
-  }
-]
-  taskToTimer: Task = this.task[0]
+  task: Task[] = [
+    {
+      index: 0,
+      name: 'Task1',
+      priority: 'fas fa-arrow-alt-circle-right',
+      totalTime: '00:01:50',
+      leftTime: '00:01:50',
+      active: false,
+    },
+    {
+      index: 1,
+      name: 'Task2',
+      priority: 'fas fa-arrow-alt-circle-right',
+      totalTime: '00:02:50',
+      leftTime: '00:02:50',
+      active: false,
+    },
+    {
+      index: 2,
+      name: 'Task3',
+      priority: 'fas fa-arrow-alt-circle-right',
+      totalTime: '00:01:00',
+      leftTime: '00:01:00',
+      active: false,
+    },
+    {
+      index: 3,
+      name: 'Task4',
+      priority: 'fas fa-arrow-alt-circle-right',
+      totalTime: '00:00:50',
+      leftTime: '00:00:50',
+      active: false,
+    },
+  ];
+  TaskSubject = new Subject<object>();
+  Task$ = this.TaskSubject.asObservable();
+  taskToTimer: Task = this.task[0];
 
-  constructor() {
-    console.log("Task.service Called")
-   }
+  ActiveTask: {
+    taskid: number;
+    status: boolean;
+  } = {
+    taskid: -1,
+    status: false,
+  };
 
-  setTask(Task: any){
-    this.task.push(Task)
-  } 
-  getTasks(){
-    return this.task
+  constructor() {}
+
+  setTask(Task: any) {
+    this.task.push(Task);
   }
-  TaskToTimer(){
-    return this.taskToTimer
+  getTasks() {
+    return this.task;
   }
-  TaskSelector(id: number, time: string){
-    this.taskToTimer = this.task[id]
-    this.taskToTimer.leftTime = time
-    console.log(this.taskToTimer)
+  getActiveTask() {
+    return this.ActiveTask;
+  }
+  TaskSelector(id: number, time: string, status: boolean) {
+    this.taskToTimer = this.task[id];
+    if(time === '0'){
+      null
+    }else{
+      this.taskToTimer.leftTime = time;
+    }
+    this.taskToTimer.active = !status;
+    this.ActiveTask.taskid = id
+    this.ActiveTask.status = !status
+    this.TaskSubject.next(this.taskToTimer);
   }
 }
