@@ -4,8 +4,143 @@
 */
 
 @media (min-width: 1281px) {
-
-
+  .Header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5% 0% 2.5% 0%;
+  }
+  .Header p {
+    font-size: 36px;
+    color: #d9d9d9;
+  }
+  .TaskWrapper {
+    background-color: #2c3c56;
+    display: flex;
+    flex-direction: row;
+    color: #bbb2cf;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .TaskWrapperActive {
+    background-color: #242c4c;
+  }
+  .TaskWrapper:hover {
+    background-color: #242c4c;
+  }
+  .Head {
+    display: flex;
+    flex-direction: row;
+    grid-area: 1/1/2/5;
+    color: #bbb2cf;
+    font-size: 16px;
+    border-bottom: 2px solid #242c4c;
+  }
+  .first {
+    width: 45%;
+    display: flex;
+    align-items: center;
+  }
+  .nonborder {
+    height: 100%;
+    width: 6px;
+    border-radius: 3px 0px 0px 3px;
+    margin-right: 15px;
+  }
+  .border {
+    height: 100%;
+    width: 6px;
+    background-color: #f66fb3;
+    border-radius: 3px 0px 0px 3px;
+    margin-right: 15px;
+  }
+  .second {
+    width: 15%;
+    display: flex;
+    align-items: center;
+  }
+  .third {
+    position: relative;
+    width: 15%;
+    display: flex;
+    align-items: center;
+  }
+  .alertWrapper {
+    position: absolute;
+    left: 40%;
+    width: 8rem;
+    height: 2.2rem;
+    background-color: #f66fb3;
+    border-radius: 4px;
+    padding: 3px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .alertActive {
+    opacity: 1;
+  }
+  .alertWrapper::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-right: 10px solid #f66fb3;
+    border-bottom: 6px solid transparent;
+  }
+  .alertHeader {
+    font-size: 11px;
+    color: #000;
+    font-weight: 500;
+  }
+  .four {
+    width: 25%;
+    display: flex;
+    align-items: center;
+  }
+  #Check:hover {
+    color: #f66fb3;
+  }
+  .fas {
+    font-size: 30px;
+  }
+  .fa-trash {
+    display: none;
+  }
+  .TaskWrapper:hover .fa-trash {
+    display: initial;
+  }
+  #Check {
+    font-size: 25px;
+    margin-left: 25%;
+  }
+  .BtnWrapper {
+    width: 100%;
+    height: 5rem;
+    padding: 12% 0px 0px 63%;
+  }
+  .BtnFinish {
+    width: 13.5rem;
+    height: 2.6rem;
+    background-color: #f66fb3;
+    border-radius: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  .BtnFinish .fas {
+    font-size: 20px;
+    margin-right: 10px;
+  }
 }
 
 /* 
@@ -14,7 +149,6 @@
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-
 }
 
 /* 
@@ -23,8 +157,6 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-
-  
 }
 
 /* 
@@ -33,7 +165,6 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  
 }
 
 /* 
@@ -42,7 +173,6 @@
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
-
 }
 
 /* 
@@ -51,143 +181,4 @@
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-
-}
-
-.Header {
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2.5% 0% 2.5% 0%;
-}
-.Header p {
-  font-size: 36px;
-  color: #d9d9d9;
-}
-.TaskWrapper {
-  background-color: #2c3c56;
-  display: flex;
-  flex-direction: row;
-  color: #bbb2cf;
-  font-size: 16px;
-  cursor: pointer;
-}
-.TaskWrapperActive{
-  background-color: #242c4c; 
-}
-.TaskWrapper:hover {
-  background-color: #242c4c;
-}
-.Head {
-  display: flex;
-  flex-direction: row;
-  grid-area: 1/1/2/5;
-  color: #bbb2cf;
-  font-size: 16px;
-  border-bottom: 2px solid #242c4c;
-}
-.first {
-  width: 45%;
-  display: flex;
-  align-items: center;
-}
-.nonborder{
-  height: 100%;
-  width: 6px;
-  border-radius: 3px 0px 0px 3px;
-  margin-right: 15px;
-}
-.border {
-  height: 100%;
-  width: 6px;
-  background-color: #f66fb3;
-  border-radius: 3px 0px 0px 3px;
-  margin-right: 15px;
-}
-.second {
-  width: 15%;
-  display: flex;
-  align-items: center;
-}
-.third {
-  position: relative;
-  width: 15%;
-  display: flex;
-  align-items: center;
-}
-.alertWrapper{
-  position: absolute;
-  left: 40%;
-  width: 8rem;
-  height: 2.2rem;
-  background-color: #f66fb3;
-  border-radius: 4px;
-  padding: 3px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-.alertActive{
-  opacity: 1;
-}
-.alertWrapper::before {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 7px;
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-right: 10px solid #f66fb3;
-  border-bottom: 6px solid transparent;
-}
-.alertHeader{
-  font-size: 11px;
-  color: #000;
-  font-weight: 500;
-}
-.four {
-  width: 25%;
-  display: flex;
-  align-items: center;
-}
-#Check:hover{
-  color: #f66fb3;
-}
-.fas {
-  font-size: 30px;
-}
-.fa-trash{
-  display: none;
-}
-.TaskWrapper:hover .fa-trash{
-  display: initial;
-}
-#Check{
-  font-size: 25px;
-  margin-left: 25%;
-}
-.BtnWrapper {
-  width: 100%;
-  height: 5rem;
-  padding: 12% 0px 0px 65%;
-}
-.BtnFinish {
-  width: 14rem;
-  height: 2.6rem;
-  background-color: #f66fb3;
-  border-radius: 4rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 17px;
-  cursor: pointer;
-}
-.BtnFinish .fas {
-  font-size: 20px;
-  margin-right: 10px;
 }
