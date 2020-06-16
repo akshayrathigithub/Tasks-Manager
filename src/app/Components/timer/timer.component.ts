@@ -12,6 +12,7 @@ export class TimerComponent implements OnInit, OnChanges {
   TaskName: string
   PopClass: boolean = false
   constructor(private TaskArr: TaskService) {
+    
   }
   ngOnInit(): void {
     this.TaskName = this.Timer.task

@@ -50,9 +50,9 @@ export class MainComponent implements OnInit {
       this.ModalSelector.id = modal._id
       this.IsBlur = !this.IsBlur
     })
-    this.TaskArr.TaskArr$.subscribe((res: any) => {
-      console.log(res.posts);
-    });
+    // this.TaskArr.TaskArr$.subscribe((res: any) => {
+    //   console.log(res.posts);
+    // });
   }
   ngOnInit(): void {
     this.Tasks = this.TaskArr.getTasks();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrevTasksService } from 'src/app/services/prev-tasks.service';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-prev-tasks',
@@ -16,7 +17,11 @@ export class PrevTasksComponent implements OnInit {
   FilterStatus: string = "Filter"
   FilterIcon: string = "fas fa-chevron-down"
   
-  constructor(private PrevTasksArr: PrevTasksService) { }
+  constructor( private TaskArr: TaskService, private PrevTasksArr: PrevTasksService) { 
+    this.TaskArr.TaskArr$.subscribe((res: any) => {
+      console.log(res.posts);
+    });
+  }
 
   ngOnInit(): void {
     this.prevTasks = this.PrevTasksArr.getPrevTasks()
