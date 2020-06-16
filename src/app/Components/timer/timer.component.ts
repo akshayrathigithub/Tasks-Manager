@@ -19,8 +19,8 @@ export class TimerComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.ringStroke = Math.floor(3.15*this.Timer.ring) + 'px, 315px'
   }
-  TimerBtn(timer: string, id: number, status: boolean){
-    if(id === -1){
+  TimerBtn(timer: string, id: string, status: boolean){
+    if(id === '-1'){
       this.PopUp(0)
     }else{
       this.TaskArr.TaskSelector(id, timer, status)

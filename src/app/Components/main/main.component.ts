@@ -10,18 +10,18 @@ import { ConvertTimeService } from 'src/app/services/convert-time.service';
 })
 export class MainComponent implements OnInit {
   Component: string;
-  Tasks: Task[];
+  Tasks: any;
   DisplayTimer: {
     ring: number;
     task: string;
     timer: string;
-    id: number;
+    id: string;
     status: boolean;
   } = {
     ring: 0,
     task: 'Please Select task from task list',
     timer: '00:00:00',
-    id: -1,
+    id: '-1',
     status: false,
   };
   TOTALSEC: any;
@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
   TotalSec: number;
   Status: boolean;
   IsBlur: boolean = false;
-  ModalSelector: string = '';
+  ModalSelector: { status: string; id: string};
 
   Clicked(Name: string) {
     this.Component = Name;
@@ -45,10 +45,14 @@ export class MainComponent implements OnInit {
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
       this.TimeRemaining(res);
     });
-    this.TaskArr.PopUp$.subscribe(modal =>{
-      this.ModalSelector = modal
+    this.TaskArr.PopUp$.subscribe((modal: any) =>{
+      this.ModalSelector.status = modal.status
+      this.ModalSelector.id = modal._id
       this.IsBlur = !this.IsBlur
     })
+    this.TaskArr.TaskArr$.subscribe((res: any) => {
+      console.log(res.posts);
+    });
   }
   ngOnInit(): void {
     this.Tasks = this.TaskArr.getTasks();
@@ -71,13 +75,13 @@ export class MainComponent implements OnInit {
       ring: this.Part,
       timer: time,
       task: task.name,
-      id: task.index,
+      id: task._id,
       status: task.active,
     };
     if (this.Status) {
       if (this.TotalSec === 0 || !this.Status) {
         if (this.TotalSec === 0) {
-          this.ModalSelector = 'TimeLimitCompleted';
+          this.ModalSelector.status = 'TimeLimitCompleted';
           this.IsBlur = true;
         }
         console.log('Completed');
@@ -89,7 +93,10 @@ export class MainComponent implements OnInit {
     }
   }
   PopUpModal() {
-    this.ModalSelector = '';
+    this.ModalSelector.status = '';
     this.IsBlur = !this.IsBlur;
+  }
+  ModalAction(type: string){
+    console.log("Hello")
   }
 }

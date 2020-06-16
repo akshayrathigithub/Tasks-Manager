@@ -1,5 +1,5 @@
 export class Task{
-    index: number;
+    _id: string;
     name: string;
     priority:  string;
     totalTime:  string;

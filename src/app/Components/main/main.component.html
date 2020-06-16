@@ -1,5 +1,5 @@
 <div>
-    <div class="ModalWrapper" *ngIf="ModalSelector === 'CompleteTask'">
+    <!-- <div class="ModalWrapper" *ngIf="ModalSelector.status === 'CompleteTask'">
         <div class="ModalInitial">
             <div class="Icon">
                 <i class="fas fa-check-circle"></i>
@@ -11,13 +11,13 @@
                     <p>Proceding will terminate this task and mark it with the status of Completion. You cannot resume
                         it again.</p>
                 </div>
-                <div class="ModalBtn" (click)="PopUpModal()" >
+                <div class="ModalBtn" (click)="ModalAction('Completed')" >
                     <p>Done!</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="ModalWrapper" *ngIf="ModalSelector === 'TimeLimitCompleted'">
+    <div class="ModalWrapper" *ngIf="ModalSelector.status === 'TimeLimitCompleted'">
         <div class="ModalInitial">
             <div class="Icon">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -27,13 +27,13 @@
                 <div class="ModalText">
                     <p>Since you couldn't complete task within time limit, the task will be saved with the status of Failed !</p>
                 </div>
-                <div class="ModalBtn" (click)="PopUpModal()">
+                <div class="ModalBtn" (click)="ModalAction('TimesUp')">
                     <p>Proceed</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="ModalWrapper" *ngIf="ModalSelector === 'RemoveTask'">
+    <div class="ModalWrapper" *ngIf="ModalSelector.status === 'RemoveTask'">
         <div class="ModalInitial">
             <div class="Icon">
                 <i class="fas fa-exclamation-circle"></i>
@@ -44,12 +44,12 @@
                 <div class="ModalText">
                     <p>Proceding will delete this task from Database. You cannot recover it again.</p>
                 </div>
-                <div class="ModalBtn" (click)="PopUpModal()" >
+                <div class="ModalBtn" (click)="ModalAction('Deleted')" >
                     <p>Done!</p>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="SvgBg">
         <svg id="artboard" viewBox="0 0 1400 980" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             [ngStyle]="{'position': 'absolute',
