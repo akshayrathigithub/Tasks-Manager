@@ -11,6 +11,7 @@ import { MainComponent } from './Components/main/main.component';
 import { FormsModule} from '@angular/forms';
 import { AnalyticsComponent } from './Components/analytics/analytics.component';
 import { PrevTasksComponent } from './Components/prev-tasks/prev-tasks.component'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PrevTasksComponent } from './Components/prev-tasks/prev-tasks.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

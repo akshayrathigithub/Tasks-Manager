@@ -76,7 +76,7 @@ export class CreateTaskComponent implements OnInit {
       priority: priority,
       active: false,
       totalTime: time,
-      leftTime: 0
+      leftTime: time
     }
     this.task.setTask(this.Task)
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../modules/taskModule';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -22,23 +23,7 @@ export class TaskService {
       totalTime: '00:02:50',
       leftTime: '00:02:50',
       active: false,
-    },
-    {
-      index: 2,
-      name: 'Task3',
-      priority: 'fas fa-arrow-alt-circle-right',
-      totalTime: '00:01:00',
-      leftTime: '00:01:00',
-      active: false,
-    },
-    {
-      index: 3,
-      name: 'Task4',
-      priority: 'fas fa-arrow-alt-circle-right',
-      totalTime: '00:00:50',
-      leftTime: '00:00:50',
-      active: false,
-    },
+    }
   ];
   TaskSubject = new Subject<object>();
   Task$ = this.TaskSubject.asObservable();
@@ -54,12 +39,14 @@ export class TaskService {
     status: false,
   };
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   setTask(Task: any) {
     this.task.push(Task);
+    this.http.post('http://localhost:1234/feed/post', Task).subscribe(res =>{ console.log(res)})
   }
   getTasks() {
+    this.http.get('http://localhost:1234/feed/posts').subscribe(res =>{ console.log(res)})
     return this.task;
   }
   getActiveTask() {
