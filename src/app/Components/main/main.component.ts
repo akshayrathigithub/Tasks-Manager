@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
   TotalSec: number;
   Status: boolean;
   IsBlur: boolean = false;
-  ModalSelector: { status: string; id: string };
+  ModalSelector: { status: string; id: string } ={ status: '', id: ''}
 
   Clicked(Name: string) {
     this.Component = Name;
