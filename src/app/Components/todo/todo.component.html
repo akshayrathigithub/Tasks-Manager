@@ -24,26 +24,30 @@
                 <p>Time left</p>
             </div>
         </div>
-        <div *ngFor="let task of Tasks; index as i;" [style.grid-area]="Span(i)" [class]="task.active ? 'TaskWrapper TaskWrapperActive' : 'TaskWrapper'" (click)="SetActiveTask(task.name, i)" >
-            <div class="first">
-                <div [class]="task.active ? 'border': 'nonborder'"></div>
-                <p> {{ task.name }} </p>
-            </div>
-            <div class="second">
-                <i [class]="task.priority"></i>
-            </div>
-            <div class="third" >
-                <div [class]=" task.active ? (PopClass ? 'alertWrapper alertActive' : 'alertWrapper') : 'alertWrapper'" >
-                    <p class="alertHeader">Cannot run multiple task at a time</p>
+        <ng-container *ngIf="Tasks; else holdOn">
+            <div *ngFor="let task of Tasks; index as i;" [style.grid-area]="Span(i)" [class]="task.active ? 'TaskWrapper TaskWrapperActive' : 'TaskWrapper'" (click)="SetActiveTask(task.name, i)" >
+                <div class="first">
+                    <div [class]="task.active ? 'border': 'nonborder'"></div>
+                    <p> {{ task.name }} </p>
                 </div>
-                <i [class]="task.active ? 'fas fa-pause-circle' : 'fas fa-play-circle' " (click)="SetTime(i,Timer.timer, task.active)"></i>
+                <div class="second">
+                    <i [class]="task.priority"></i>
+                </div>
+                <div class="third" >
+                    <div [class]=" task.active ? (PopClass ? 'alertWrapper alertActive' : 'alertWrapper') : 'alertWrapper'" >
+                        <p class="alertHeader">Cannot run multiple task at a time</p>
+                    </div>
+                    <i [class]="task.active ? 'fas fa-pause-circle' : 'fas fa-play-circle' " (click)="SetTime(i,Timer.timer, task.active)"></i>
+                </div>
+                <div class="four">
+                    <p *ngIf="task.active;else nonActive" [style.color]="'#f66fb3'">{{ Timer.timer }}</p>
+                    <ng-template #nonActive><p>{{ task.leftTime }}</p></ng-template>
+                    <i (click)= "ModalCalled(Icon,task._id)" [class]="task.active ? 'fas fa-check' : 'fas fa-trash'" id="Check" #Icon></i>
+                </div>
             </div>
-            <div class="four">
-                <p *ngIf="task.active;else nonActive" [style.color]="'#f66fb3'">{{ Timer.timer }}</p>
-                <ng-template #nonActive><p>{{ task.leftTime }}</p></ng-template>
-                <i (click)= "ModalCalled(Icon,task._id)" [class]="task.active ? 'fas fa-check' : 'fas fa-trash'" id="Check" #Icon></i>
-            </div>
-        </div>
+        </ng-container>
+        <ng-template #holdOn><p>Loading...</p></ng-template>
+        
     </div>
     <div class="BtnWrapper">
         <div class="BtnFinish" (click)="Called()" >

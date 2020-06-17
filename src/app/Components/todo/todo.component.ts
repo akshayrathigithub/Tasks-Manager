@@ -8,18 +8,18 @@ import { TaskService } from "src/app/services/task.service";
   styleUrls: ["./todo.component.css"],
 })
 export class TodoComponent implements OnInit {
-  Tasks: Task[];
+  Tasks;
   Rows: number;
   ActiveTask: string = "";
   PopClass: boolean = false;
   @Output() task = new EventEmitter();
   @Input() Timer: any;
 
+
   constructor(private TaskArr: TaskService) {
     this.TaskArr.TaskArr$.subscribe((res: any) => {
-      console.log(res.posts);
       this.Tasks = [...res.posts];
-      this.Rows = 1 + this.Tasks.length;
+      console.log(res.posts, "todoComponent");
     });
   }
 

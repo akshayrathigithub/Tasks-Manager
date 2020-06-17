@@ -22,7 +22,9 @@ export class TaskService {
     status: false,
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getTasks()
+  }
 
   setTask(Task: any) {
     this.http.post('http://localhost:1234/task-manager/create-task', Task).subscribe(res =>{ console.log(res)})

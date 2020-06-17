@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Task } from '../../modules/taskModule';
-import { TaskService } from 'src/app/services/task.service';
-import { ConvertTimeService } from 'src/app/services/convert-time.service';
+import { Component, OnInit } from "@angular/core";
+import { Task } from "../../modules/taskModule";
+import { TaskService } from "src/app/services/task.service";
+import { ConvertTimeService } from "src/app/services/convert-time.service";
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  selector: "app-main",
+  templateUrl: "./main.component.html",
+  styleUrls: ["./main.component.css"],
 })
 export class MainComponent implements OnInit {
-  Component: string;
-  Tasks: any;
+  Component: string = "Task";
   DisplayTimer: {
     ring: number;
     task: string;
@@ -19,9 +18,9 @@ export class MainComponent implements OnInit {
     status: boolean;
   } = {
     ring: 0,
-    task: 'Please Select task from task list',
-    timer: '00:00:00',
-    id: '-1',
+    task: "Please Select task from task list",
+    timer: "00:00:00",
+    id: "-1",
     status: false,
   };
   TOTALSEC: any;
@@ -29,7 +28,7 @@ export class MainComponent implements OnInit {
   TotalSec: number;
   Status: boolean;
   IsBlur: boolean = false;
-  ModalSelector: { status: string; id: string};
+  ModalSelector: { status: string; id: string };
 
   Clicked(Name: string) {
     this.Component = Name;
@@ -45,22 +44,21 @@ export class MainComponent implements OnInit {
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
       this.TimeRemaining(res);
     });
-    this.TaskArr.PopUp$.subscribe((modal: any) =>{
-      this.ModalSelector.status = modal.status
-      this.ModalSelector.id = modal._id
-      this.IsBlur = !this.IsBlur
-    })
-    // this.TaskArr.TaskArr$.subscribe((res: any) => {
-    //   console.log(res.posts);
-    // });
+    this.TaskArr.PopUp$.subscribe((modal: any) => {
+      this.ModalSelector.status = modal.status;
+      this.ModalSelector.id = modal._id;
+      this.IsBlur = !this.IsBlur;
+    });
   }
   ngOnInit(): void {
-    this.Tasks = this.TaskArr.getTasks();
-    if (this.Tasks.length === 0) {
-      this.Component = 'NoTaskFound';
-    } else {
-      this.Component = 'Task';
-    }
+    this.TaskArr.TaskArr$.subscribe((res: any) => {
+      const Tasks = [...res.posts];
+      if (Tasks.length === 0) {
+        this.Component = "NoTaskFound";
+      } else {
+        this.Component = "Task";
+      }
+    });
   }
   TimeRemaining(task: Task) {
     if (this.Status) {
@@ -81,10 +79,10 @@ export class MainComponent implements OnInit {
     if (this.Status) {
       if (this.TotalSec === 0 || !this.Status) {
         if (this.TotalSec === 0) {
-          this.ModalSelector.status = 'TimeLimitCompleted';
+          this.ModalSelector.status = "TimeLimitCompleted";
           this.IsBlur = true;
         }
-        console.log('Completed');
+        console.log("Completed");
       } else {
         setTimeout(() => {
           this.TimeRemaining(task);
@@ -93,10 +91,10 @@ export class MainComponent implements OnInit {
     }
   }
   PopUpModal() {
-    this.ModalSelector.status = '';
+    this.ModalSelector.status = "";
     this.IsBlur = !this.IsBlur;
   }
-  ModalAction(type: string){
-    console.log("Hello")
+  ModalAction(type: string) {
+    console.log("Hello");
   }
 }
