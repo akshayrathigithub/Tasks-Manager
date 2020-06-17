@@ -29,7 +29,15 @@ export class MainComponent implements OnInit {
   TotalSec: number;
   Status: boolean;
   IsBlur: boolean = false;
-  ModalSelector: { status: string; id: string } ={ status: '', id: ''}
+  ModalSelector: { status: string; task: Task } ={ 
+    status: '',
+    task: {_id: '',
+      name: '',
+      priority: '',
+      totalTime: '',
+      leftTime: '',
+      active: false}
+  }
 
   Clicked(Name: string) {
     this.Component = Name;
@@ -38,6 +46,7 @@ export class MainComponent implements OnInit {
     private TaskArr: TaskService,
     private TimeService: ConvertTimeService
   ) {
+
     this.TaskArr.Task$.subscribe((res: Task) => {
       this.Status = res.active;
       this.TOTALSEC = res.totalTime;
@@ -45,19 +54,22 @@ export class MainComponent implements OnInit {
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
       this.TimeRemaining(res);
     });
+
     this.TaskArr.PopUp$.subscribe((modal: any) => {
       this.ModalSelector.status = modal.status;
-      this.ModalSelector.id = modal._id;
+      this.ModalSelector.task = modal.task;
       this.IsBlur = !this.IsBlur;
     });
+
     this.TaskArr.Component$.subscribe((comp: string) => {
       this.Component = comp
     })
+
     this.TaskArr.TaskArr$.subscribe((res: any) => {
       this.Tasks = [...res.posts];
-      console.log(res.posts, "todoComponent");
     });
   }
+
   ngOnInit(): void {
     this.TaskArr.TaskArr$.subscribe((res: any) => {
       const Tasks = [...res.posts];
@@ -68,6 +80,7 @@ export class MainComponent implements OnInit {
       }
     });
   }
+
   TimeRemaining(task: Task) {
     if (this.Status) {
       this.TotalSec = this.TotalSec - 1;
@@ -82,7 +95,7 @@ export class MainComponent implements OnInit {
       timer: time,
       task: task.name,
       id: task._id,
-      status: task.active,
+      status: task.active
     };
     if (this.Status) {
       if (this.TotalSec === 0 || !this.Status) {
@@ -98,11 +111,24 @@ export class MainComponent implements OnInit {
       }
     }
   }
+
   PopUpModal() {
     this.ModalSelector.status = "";
     this.IsBlur = !this.IsBlur;
   }
-  ModalAction(type: string) {
-    console.log("Hello");
+
+  ModalAction(ActionType: string) {
+    if(ActionType == "TimesUp"){
+      this.TaskArr.getTaskUpdated(this.ModalSelector.task)
+      this.PopUpModal()
+    }else if(ActionType === "Completed"){
+      this.TaskArr.getTaskUpdated(this.ModalSelector.task)
+      this.PopUpModal()
+    }else if(ActionType === "Deleted"){
+      this.TaskArr.getTaskDeleted(this.ModalSelector.task._id)
+      this.PopUpModal()
+    }else{
+      null
+    }
   }
 }

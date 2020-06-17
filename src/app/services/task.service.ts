@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Task } from '../modules/taskModule';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class TaskService {
     this.getTasks()
   }
 
-  setTask(Task: any) {
+  setTask(Task: Task) {
     this.http.post('http://localhost:1234/task-manager/create-task', Task).subscribe(res =>{ 
       this.getTasks()
     })
@@ -58,19 +59,19 @@ export class TaskService {
     // this.TaskSubject.next(this.taskToTimer);
   }
 
-  ModalSelector(modal: string, id: string){
-    if(modal = 'fas fa-check'){
-      this.PopUpSubject.next({status:'CompleteTask', _id: id })
+  ModalSelector(modal: string, Task: Task){
+    if(modal = 'fa-trash fas'){
+      this.PopUpSubject.next({status:'RemoveTask', task: Task })
     }else{
-      this.PopUpSubject.next({status: 'RemoveTask', _id: id})
+      this.PopUpSubject.next({status: 'CompleteTask', task: Task})
     }
   }
 
   getTaskDeleted(id: string){
-    this.http.post('http://localhost:1234/task-manager/delete-task', id).subscribe(res =>{ console.log(res)})
+    this.http.post('http://localhost:1234/task-manager/delete-task', id).subscribe(res =>{ console.log("Hello")})
   }
 
-  getTaskUpdated(task){
+  getTaskUpdated(task: Task){
     this.http.post('http://localhost:1234/task-manager/update-task', task).subscribe(res =>{ console.log(res)})
   }
   ComponentSelector(component: string){

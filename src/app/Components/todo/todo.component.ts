@@ -48,7 +48,7 @@ export class TodoComponent implements OnInit {
   SetActiveTask(taskname: string, id: number) {
     this.ActiveTask = taskname;
   }
-  ModalCalled(icon: any, id: string) {
-    this.TaskArr.ModalSelector(icon.attributes[2].value, id);
+  ModalCalled(icon: any, Task: Task) {
+    this.TaskArr.ModalSelector(icon.attributes[2].value, Task);
   }
 }

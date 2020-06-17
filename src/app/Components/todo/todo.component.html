@@ -42,7 +42,7 @@
                 <div class="four">
                     <p *ngIf="task.active;else nonActive" [style.color]="'#f66fb3'">{{ Timer.timer }}</p>
                     <ng-template #nonActive><p>{{ task.leftTime }}</p></ng-template>
-                    <i (click)= "ModalCalled(Icon,task._id)" [class]="task.active ? 'fas fa-check' : 'fas fa-trash'" id="Check" #Icon></i>
+                    <i (click)= "ModalCalled(Icon,task)" [class]="task.active ? 'fas fa-check' : 'fas fa-trash'" id="Check" #Icon></i>
                 </div>
             </div>
         </ng-container>
