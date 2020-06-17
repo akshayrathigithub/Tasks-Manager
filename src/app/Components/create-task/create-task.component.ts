@@ -79,5 +79,6 @@ export class CreateTaskComponent implements OnInit {
       leftTime: time
     }
     this.task.setTask(this.Task)
+    this.task.ComponentSelector('Task')
   }
 }

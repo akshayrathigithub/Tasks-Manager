@@ -9,6 +9,7 @@ import { ConvertTimeService } from "src/app/services/convert-time.service";
   styleUrls: ["./main.component.css"],
 })
 export class MainComponent implements OnInit {
+  Tasks: Task[]
   Component: string = "Task";
   DisplayTimer: {
     ring: number;
@@ -48,6 +49,13 @@ export class MainComponent implements OnInit {
       this.ModalSelector.status = modal.status;
       this.ModalSelector.id = modal._id;
       this.IsBlur = !this.IsBlur;
+    });
+    this.TaskArr.Component$.subscribe((comp: string) => {
+      this.Component = comp
+    })
+    this.TaskArr.TaskArr$.subscribe((res: any) => {
+      this.Tasks = [...res.posts];
+      console.log(res.posts, "todoComponent");
     });
   }
   ngOnInit(): void {

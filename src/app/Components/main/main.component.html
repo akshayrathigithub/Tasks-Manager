@@ -73,10 +73,10 @@
                     <app-timer [Timer]="DisplayTimer"></app-timer>
                 </div>
                 <div *ngSwitchCase="'Task'">
-                    <app-todo (task)="Component=$event" [Timer]="DisplayTimer"></app-todo>
+                    <app-todo [Timer]="DisplayTimer" [Tasks]="Tasks"></app-todo>
                 </div>
                 <div *ngSwitchCase="'NoTaskFound'">
-                    <app-header (task)="Component=$event"></app-header>
+                    <app-header></app-header>
                 </div>
                 <div *ngSwitchCase="'CreateTask'">
                     <app-create-task></app-create-task>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { Component, OnInit,  Input } from "@angular/core";
 import { Task } from "src/app/modules/taskModule";
 import { TaskService } from "src/app/services/task.service";
 
@@ -8,24 +8,19 @@ import { TaskService } from "src/app/services/task.service";
   styleUrls: ["./todo.component.css"],
 })
 export class TodoComponent implements OnInit {
-  Tasks;
   Rows: number;
   ActiveTask: string = "";
   PopClass: boolean = false;
-  @Output() task = new EventEmitter();
   @Input() Timer: any;
-
+  @Input() Tasks: Task[];
 
   constructor(private TaskArr: TaskService) {
-    this.TaskArr.TaskArr$.subscribe((res: any) => {
-      this.Tasks = [...res.posts];
-      console.log(res.posts, "todoComponent");
-    });
+    
   }
 
   ngOnInit(): void {}
   Called() {
-    this.task.emit("CreateTask");
+    this.TaskArr.ComponentSelector("CreateTask");
   }
   Span(index: number) {
     return `${index + 2}/1/${index + 3}/5`;

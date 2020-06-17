@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class TaskService {
+  ComponentSubject = new Subject<String>()
+  Component$ = this.ComponentSubject.asObservable()
   TaskArrSubject = new Subject<object>()
   TaskArr$ = this.TaskArrSubject.asObservable()
   TaskSubject = new Subject<object>()
@@ -27,7 +29,9 @@ export class TaskService {
   }
 
   setTask(Task: any) {
-    this.http.post('http://localhost:1234/task-manager/create-task', Task).subscribe(res =>{ console.log(res)})
+    this.http.post('http://localhost:1234/task-manager/create-task', Task).subscribe(res =>{ 
+      this.getTasks()
+    })
   }
 
   getTasks() {
@@ -68,5 +72,8 @@ export class TaskService {
 
   getTaskUpdated(task){
     this.http.post('http://localhost:1234/task-manager/update-task', task).subscribe(res =>{ console.log(res)})
+  }
+  ComponentSelector(component: string){
+    this.ComponentSubject.next(component)
   }
 }
