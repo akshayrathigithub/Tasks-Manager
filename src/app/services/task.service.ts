@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Task } from '../modules/taskModule';
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Task } from "../modules/taskModule";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class TaskService {
-  ComponentSubject = new Subject<String>()
-  Component$ = this.ComponentSubject.asObservable()
-  TaskArrSubject = new Subject<object>()
-  TaskArr$ = this.TaskArrSubject.asObservable()
-  TaskSubject = new Subject<object>()
-  Task$ = this.TaskSubject.asObservable()
-  PopUpSubject = new Subject<object>()
-  PopUp$ = this.PopUpSubject.asObservable()
+  ComponentSubject = new Subject<String>();
+  Component$ = this.ComponentSubject.asObservable();
+  TaskArrSubject = new Subject<object>();
+  TaskArr$ = this.TaskArrSubject.asObservable();
+  TaskSubject = new Subject<object>();
+  Task$ = this.TaskSubject.asObservable();
+  PopUpSubject = new Subject<object>();
+  PopUp$ = this.PopUpSubject.asObservable();
   // taskToTimer: Task = this.task[0];
 
   ActiveTask: {
@@ -26,20 +26,24 @@ export class TaskService {
   };
 
   constructor(private http: HttpClient) {
-    this.getTasks()
+    this.getTasks();
   }
 
   setTask(Task: Task) {
-    this.http.post('http://localhost:1234/task-manager/create-task', Task).subscribe(res =>{ 
-      this.getTasks()
-    })
+    this.http
+      .post("http://localhost:1234/task-manager/create-task", Task)
+      .subscribe((res) => {
+        this.getTasks();
+      });
   }
 
   getTasks() {
-    this.http.get('http://localhost:1234/task-manager/get-tasks').subscribe(res =>{ 
-      this.TaskArrSubject.next(res);
-    })
-    return []
+    this.http
+      .get("http://localhost:1234/task-manager/get-tasks")
+      .subscribe((res) => {
+        this.TaskArrSubject.next(res);
+      });
+    return [];
   }
 
   getActiveTask() {
@@ -59,22 +63,31 @@ export class TaskService {
     // this.TaskSubject.next(this.taskToTimer);
   }
 
-  ModalSelector(modal: string, Task: Task){
-    if(modal = 'fa-trash fas'){
-      this.PopUpSubject.next({status:'RemoveTask', task: Task })
-    }else{
-      this.PopUpSubject.next({status: 'CompleteTask', task: Task})
+  ModalSelector(modal: string, Task: Task) {
+    if ((modal = "fa-trash fas")) {
+      this.PopUpSubject.next({ status: "RemoveTask", task: Task });
+    } else {
+      this.PopUpSubject.next({ status: "CompleteTask", task: Task });
     }
   }
 
-  getTaskDeleted(id: string){
-    this.http.post('http://localhost:1234/task-manager/delete-task', id).subscribe(res =>{ console.log("Hello")})
+  getTaskDeleted(id: string) {
+    let Id: object = { key: id };
+    this.http
+      .post("http://localhost:1234/task-manager/delete-task", Id)
+      .subscribe((res) => {
+        this.getTasks();
+      });
   }
 
-  getTaskUpdated(task: Task){
-    this.http.post('http://localhost:1234/task-manager/update-task', task).subscribe(res =>{ console.log(res)})
+  getTaskUpdated(task: Task) {
+    this.http
+      .post("http://localhost:1234/task-manager/update-task", task)
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
-  ComponentSelector(component: string){
-    this.ComponentSubject.next(component)
+  ComponentSelector(component: string) {
+    this.ComponentSubject.next(component);
   }
 }
