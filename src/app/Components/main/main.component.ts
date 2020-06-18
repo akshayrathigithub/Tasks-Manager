@@ -49,8 +49,7 @@ export class MainComponent implements OnInit {
 
     this.TaskArr.Task$.subscribe((res: Task) => {
       this.Status = res.active;
-      this.TOTALSEC = res.totalTime;
-      this.TOTALSEC = this.TimeService.getSeconds(this.TOTALSEC);
+      this.TOTALSEC = this.TimeService.getSeconds(res.totalTime);
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
       this.TimeRemaining(res);
     });

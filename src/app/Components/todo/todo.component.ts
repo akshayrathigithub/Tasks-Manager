@@ -14,29 +14,31 @@ export class TodoComponent implements OnInit {
   @Input() Timer: any;
   @Input() Tasks: Task[];
 
-  constructor(private TaskArr: TaskService) {
-    
-  }
+  constructor(private TaskArr: TaskService) {}
 
   ngOnInit(): void {}
+
   Called() {
     this.TaskArr.ComponentSelector("CreateTask");
   }
+
   Span(index: number) {
     return `${index + 2}/1/${index + 3}/5`;
   }
-  SetTime(id: number, time: string, status: boolean) {
+
+  SetTime(id: string, time: string, status: boolean) {
     let task = this.TaskArr.getActiveTask();
     if (task.status) {
       if (task.taskid === id) {
-        // this.TaskArr.TaskSelector(id, time, status)
+        this.TaskArr.TaskSelector(id, time, status)
       } else {
         this.PopUp(0);
       }
     } else {
-      // this.TaskArr.TaskSelector(id, time='0', status)
+      this.TaskArr.TaskSelector(id, time='0', status)
     }
   }
+
   PopUp(I: number) {
     if (I === 4) {
       this.PopClass = false;
@@ -45,9 +47,11 @@ export class TodoComponent implements OnInit {
       setTimeout(() => this.PopUp(I + 1), 1000);
     }
   }
+
   SetActiveTask(taskname: string, id: number) {
     this.ActiveTask = taskname;
   }
+
   ModalCalled(icon: any, Task: Task) {
     this.TaskArr.ModalSelector(icon.attributes[2].value, Task);
   }

@@ -37,7 +37,7 @@
                     <div [class]=" task.active ? (PopClass ? 'alertWrapper alertActive' : 'alertWrapper') : 'alertWrapper'" >
                         <p class="alertHeader">Cannot run multiple task at a time</p>
                     </div>
-                    <i [class]="task.active ? 'fas fa-pause-circle' : 'fas fa-play-circle' " (click)="SetTime(i,Timer.timer, task.active)"></i>
+                    <i [class]="task.active ? 'fas fa-pause-circle' : 'fas fa-play-circle' " (click)="SetTime(task._id,Timer.timer, task.active)"></i>
                 </div>
                 <div class="four">
                     <p *ngIf="task.active;else nonActive" [style.color]="'#f66fb3'">{{ Timer.timer }}</p>

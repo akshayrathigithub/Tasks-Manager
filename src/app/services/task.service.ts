@@ -15,13 +15,13 @@ export class TaskService {
   Task$ = this.TaskSubject.asObservable();
   PopUpSubject = new Subject<object>();
   PopUp$ = this.PopUpSubject.asObservable();
-  // taskToTimer: Task = this.task[0];
-
+  taskToTimer: Task;
+  TodayTasksList: Task[]
   ActiveTask: {
-    taskid: number;
+    taskid: string;
     status: boolean;
   } = {
-    taskid: -1,
+    taskid: '-1',
     status: false,
   };
 
@@ -40,8 +40,9 @@ export class TaskService {
   getTasks() {
     this.http
       .get("http://localhost:1234/task-manager/get-tasks")
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         this.TaskArrSubject.next(res);
+        this.TodayTasksList = [...res.posts]
       });
     return [];
   }
@@ -51,16 +52,16 @@ export class TaskService {
   }
 
   TaskSelector(id: string, time: string, status: boolean) {
-    // this.taskToTimer = this.task[id];
-    // if(time === '0'){
-    //   null
-    // }else{
-    //   this.taskToTimer.leftTime = time;
-    // }
-    // this.taskToTimer.active = !status;
-    // this.ActiveTask.taskid = id
-    // this.ActiveTask.status = !status
-    // this.TaskSubject.next(this.taskToTimer);
+    this.taskToTimer = this.TodayTasksList.filter(task => task._id === id)[0]
+    if(time === '0'){
+      null
+    }else{
+      this.taskToTimer.leftTime = time;
+    }
+    this.taskToTimer.active = !status;
+    this.ActiveTask.taskid = id
+    this.ActiveTask.status = !status
+    this.TaskSubject.next(this.taskToTimer);
   }
 
   ModalSelector(modal: string, Task: Task) {

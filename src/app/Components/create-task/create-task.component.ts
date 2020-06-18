@@ -70,7 +70,7 @@ export class CreateTaskComponent implements OnInit {
     }else{
       priority = 'fas fa-arrow-alt-circle-right'
     }
-    let time: number = this.timeService.getSeconds(`${this.H_1}${this.H_2}:${this.M_1}${this.M_2}:${this.S_1}${this.S_2}`)
+    let time: string = `${this.H_1}${this.H_2}:${this.M_1}${this.M_2}:${this.S_1}${this.S_2}`
     this.Task = {
       name: this.taskName,
       priority: priority,
