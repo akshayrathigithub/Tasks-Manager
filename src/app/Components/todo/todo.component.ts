@@ -17,7 +17,6 @@ export class TodoComponent implements OnInit {
   constructor(private TaskArr: TaskService) {}
 
   ngOnInit(): void {}
-
   Called() {
     this.TaskArr.ComponentSelector("CreateTask");
   }

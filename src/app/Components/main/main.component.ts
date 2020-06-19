@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { Task } from "../../modules/taskModule";
 import { TaskService } from "src/app/services/task.service";
 import { ConvertTimeService } from "src/app/services/convert-time.service";
@@ -8,7 +8,14 @@ import { ConvertTimeService } from "src/app/services/convert-time.service";
   templateUrl: "./main.component.html",
   styleUrls: ["./main.component.css"],
 })
+
 export class MainComponent implements OnInit {
+
+  /* when the tab is closed or browser crashes */
+  @HostListener('window:beforeunload', ['$event'])
+  doSomething($event) {
+    this.TaskArr.getTaskUpdated(this.ModalSelector.task)
+  }
   Tasks: Task[]
   Component: string = "Task";
   DisplayTimer: {
@@ -42,14 +49,12 @@ export class MainComponent implements OnInit {
     }
   }
 
-  Clicked(Name: string) {
-    this.Component = Name;
-  }
   constructor(
     private TaskArr: TaskService,
     private TimeService: ConvertTimeService
   ) {
     this.TaskArr.Task$.subscribe((res: Task) => {
+      this.ModalSelector.task = res
       this.Status = res.active;
       this.TOTALSEC = this.TimeService.getSeconds(res.totalTime);
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
@@ -85,6 +90,10 @@ export class MainComponent implements OnInit {
     });
   }
 
+  Clicked(Name: string) {
+    this.Component = Name;
+  }
+
   TimeRemaining(task: Task) {
     if (this.Status) {
       this.TotalSec = this.TotalSec - 1;
@@ -94,6 +103,7 @@ export class MainComponent implements OnInit {
     this.Part = Math.floor((this.TotalSec / this.TOTALSEC) * 100);
     let totalsec = this.TotalSec;
     let time: string = this.TimeService.getTime(totalsec);
+    this.ModalSelector.task.leftTime = time
     this.DisplayTimer = {
       ring: this.Part,
       timer: time,
@@ -123,9 +133,11 @@ export class MainComponent implements OnInit {
 
   ModalAction(ActionType: string) {
     if(ActionType == "TimesUp"){
-      // this.TaskArr.getTaskUpdated(this.ModalSelector.task)
+      this.ModalSelector.task.status = "InCompleted"
+      this.TaskArr.getTaskUpdated(this.ModalSelector.task)
       this.PopUpModal()
     }else if(ActionType === "Completed"){
+      this.ModalSelector.task.status = "Completed"
       this.TaskArr.getTaskUpdated(this.ModalSelector.task)
       this.PopUpModal()
     }else if(ActionType === "Deleted"){
