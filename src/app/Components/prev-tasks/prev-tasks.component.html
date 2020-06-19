@@ -69,7 +69,7 @@
         </div>
         <div *ngFor="let task of Tasks; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
             <div class="first">
-                <div [class]="task.status ? 'completed': 'incompleted'"></div>
+                <div [class]="task.status === 'Completed' ? 'completed': 'incompleted'"></div>
                 <p> {{ task.name }} </p>
             </div>
             <div class="second">
@@ -80,7 +80,7 @@
             </div>
             <div class="four">
                 <p [style.color]="'#bbb2cf'">{{ task.totalTime }}</p>
-                <i class="fas fa-trash" id="Check"></i>
+                <i class="fas fa-trash" (click)="Delete(task._id)" id="Check"></i>
             </div>
         </div>
     </div>

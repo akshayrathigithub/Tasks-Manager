@@ -6,5 +6,5 @@ export class Task{
     leftTime:  string;
     active: boolean;
     status: string;
-    created: number;
+    created: string;
   }

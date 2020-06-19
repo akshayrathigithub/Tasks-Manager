@@ -47,7 +47,7 @@ export class MainComponent implements OnInit {
       leftTime: '',
       active: false,
       status: '',
-      created: -1
+      created: '-1'
     }
   }
 

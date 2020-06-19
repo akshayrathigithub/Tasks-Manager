@@ -46,7 +46,7 @@ export class TaskService {
         let prevTask = []
         let currDay = new Date()
         TotalTasks.forEach(task =>{
-          if(task.created === currDay.getDate()){
+          if(task.created === currDay.toDateString()){
             currTask.push(task)
           }else{
             prevTask.push(task)

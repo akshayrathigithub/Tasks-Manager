@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from 'src/app/modules/taskModule';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-prev-tasks',
@@ -16,7 +17,7 @@ export class PrevTasksComponent implements OnInit {
   FilterIcon: string = "fas fa-chevron-down"
   @Input() Tasks: Task[];
   
-  constructor() { }
+  constructor(private TaskArr: TaskService) { }
 
   ngOnInit(): void {
     this.Rows = 1+this.Tasks.length
@@ -31,5 +32,8 @@ export class PrevTasksComponent implements OnInit {
     this.FilterStatus = filter
     this.FilterIcon = icon
     this.toggle = !this.toggle
+  }
+  Delete(ID: string){
+    this.TaskArr.getTaskDeleted(ID)
   }
 }

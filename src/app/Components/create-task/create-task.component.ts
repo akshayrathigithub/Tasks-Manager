@@ -79,7 +79,7 @@ export class CreateTaskComponent implements OnInit {
       totalTime: time,
       leftTime: time,
       status: 'OnGoing',
-      created: createdOn.getDate()
+      created: createdOn.toDateString()
     }
     this.task.setTask(this.Task)
     this.task.ComponentSelector('Task')
