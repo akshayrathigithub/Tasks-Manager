@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   /* when the tab is closed or browser crashes */
   @HostListener('window:beforeunload', ['$event'])
   doSomething($event) {
+    this.ModalSelector.task.active = false
     this.TaskArr.getTaskUpdated(this.ModalSelector.task)
   }
   Tasks: Task[]
