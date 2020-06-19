@@ -41,18 +41,24 @@ export class TaskService {
     this.http
       .get("http://localhost:1234/task-manager/get-tasks")
       .subscribe((res: any) => {
-        const TotalTasks = [...res.posts]
-        let currTask = []
-        let prevTask = []
-        let currDay = new Date()
-        TotalTasks.forEach(task =>{
-          if(task.created === currDay.toDateString()){
-            currTask.push(task)
-          }else{
-            prevTask.push(task)
+        const TotalTasks = [...res.posts];
+        let currTask = [];
+        let prevTask = [];
+        let date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        TotalTasks.forEach((task) => {
+          if (task.created === `${day}/${month}/${year}`) {
+            currTask.push(task);
+          } else {
+            prevTask.push(task);
           }
-        })
-        this.TaskArrSubject.next({ CurrentTasks: currTask, PreviousTasks: prevTask });
+        });
+        this.TaskArrSubject.next({
+          CurrentTasks: currTask,
+          PreviousTasks: prevTask,
+        });
         this.TodayTasksList = [...currTask];
       });
     return [];
