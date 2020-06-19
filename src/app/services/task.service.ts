@@ -41,8 +41,19 @@ export class TaskService {
     this.http
       .get("http://localhost:1234/task-manager/get-tasks")
       .subscribe((res: any) => {
-        this.TaskArrSubject.next(res);
-        this.TodayTasksList = [...res.posts];
+        const TotalTasks = [...res.posts]
+        let currTask = []
+        let prevTask = []
+        let currDay = new Date()
+        TotalTasks.forEach(task =>{
+          if(task.created === currDay.getDate()){
+            currTask.push(task)
+          }else{
+            prevTask.push(task)
+          }
+        })
+        this.TaskArrSubject.next({ CurrentTasks: currTask, PreviousTasks: prevTask });
+        this.TodayTasksList = [...currTask];
       });
     return [];
   }
@@ -57,11 +68,9 @@ export class TaskService {
       null;
     } else {
       if (time === "00:00:00") {
-        console.log('Hello')
         null;
       } else {
         this.taskToTimer.leftTime = time;
-        console.log(time);
       }
     }
     this.taskToTimer.active = !status;

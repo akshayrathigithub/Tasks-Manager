@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PrevTasksService } from 'src/app/services/prev-tasks.service';
-import { TaskService } from 'src/app/services/task.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from 'src/app/modules/taskModule';
 
 @Component({
   selector: 'app-prev-tasks',
@@ -9,23 +8,18 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class PrevTasksComponent implements OnInit {
 
-  prevTasks: any ;
   Rows: number
   ActiveTask: string = ''
   SearchedTaskName: string
   toggle: boolean = false
   FilterStatus: string = "Filter"
   FilterIcon: string = "fas fa-chevron-down"
+  @Input() Tasks: Task[];
   
-  constructor( private TaskArr: TaskService, private PrevTasksArr: PrevTasksService) { 
-    this.TaskArr.TaskArr$.subscribe((res: any) => {
-      console.log(res.posts);
-    });
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.prevTasks = this.PrevTasksArr.getPrevTasks()
-    this.Rows = 1+this.prevTasks.length
+    this.Rows = 1+this.Tasks.length
   }
   Span(index: number){
     return `${index+2}/1/${index+3}/5`

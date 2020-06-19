@@ -73,7 +73,7 @@
                     <app-timer [Timer]="DisplayTimer"></app-timer>
                 </div>
                 <div *ngSwitchCase="'Task'">
-                    <app-todo [Timer]="DisplayTimer" [Tasks]="Tasks"></app-todo>
+                    <app-todo [Timer]="DisplayTimer" [Tasks]="CurrTasks"></app-todo>
                 </div>
                 <div *ngSwitchCase="'NoTaskFound'">
                     <app-header></app-header>
@@ -85,7 +85,7 @@
                     <app-analytics></app-analytics>
                 </div>
                 <div *ngSwitchCase="'PrevTasks'">
-                    <app-prev-tasks></app-prev-tasks>
+                    <app-prev-tasks [Tasks]="PrevTasks"></app-prev-tasks>
                 </div>
                 <div *ngSwitchDefault>
                     <app-create-task></app-create-task>

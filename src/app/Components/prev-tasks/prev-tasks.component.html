@@ -67,7 +67,7 @@
                 <p>Time</p>
             </div>
         </div>
-        <div *ngFor="let task of prevTasks; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
+        <div *ngFor="let task of Tasks; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
             <div class="first">
                 <div [class]="task.status ? 'completed': 'incompleted'"></div>
                 <p> {{ task.name }} </p>

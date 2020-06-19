@@ -17,7 +17,8 @@ export class MainComponent implements OnInit {
     this.ModalSelector.task.active = false
     this.TaskArr.getTaskUpdated(this.ModalSelector.task)
   }
-  Tasks: Task[]
+  CurrTasks: Task[]
+  PrevTasks: Task[]
   Component: string = "Task";
   DisplayTimer: {
     ring: number;
@@ -76,13 +77,14 @@ export class MainComponent implements OnInit {
     })
 
     this.TaskArr.TaskArr$.subscribe((res: any) => {
-      this.Tasks = [...res.posts];
+      this.CurrTasks = [...res.CurrentTasks];
+      this.PrevTasks = [...res.PreviousTasks];
     });
   }
 
   ngOnInit(): void {
     this.TaskArr.TaskArr$.subscribe((res: any) => {
-      const Tasks = [...res.posts];
+      const Tasks = [...res.CurrentTasks];
       if (Tasks.length === 0) {
         this.Component = "NoTaskFound";
       } else {
