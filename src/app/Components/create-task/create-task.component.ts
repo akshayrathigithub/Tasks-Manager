@@ -71,12 +71,15 @@ export class CreateTaskComponent implements OnInit {
       priority = 'fas fa-arrow-alt-circle-right'
     }
     let time: string = `${this.H_1}${this.H_2}:${this.M_1}${this.M_2}:${this.S_1}${this.S_2}`
+    let createdOn = new Date()
     this.Task = {
       name: this.taskName,
       priority: priority,
       active: false,
       totalTime: time,
-      leftTime: time
+      leftTime: time,
+      status: 'OnGoing',
+      created: createdOn.getDate()
     }
     this.task.setTask(this.Task)
     this.task.ComponentSelector('Task')

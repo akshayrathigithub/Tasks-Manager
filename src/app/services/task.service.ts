@@ -16,12 +16,12 @@ export class TaskService {
   PopUpSubject = new Subject<object>();
   PopUp$ = this.PopUpSubject.asObservable();
   taskToTimer: Task;
-  TodayTasksList: Task[]
+  TodayTasksList: Task[];
   ActiveTask: {
     taskid: string;
     status: boolean;
   } = {
-    taskid: '-1',
+    taskid: "-1",
     status: false,
   };
 
@@ -42,7 +42,7 @@ export class TaskService {
       .get("http://localhost:1234/task-manager/get-tasks")
       .subscribe((res: any) => {
         this.TaskArrSubject.next(res);
-        this.TodayTasksList = [...res.posts]
+        this.TodayTasksList = [...res.posts];
       });
     return [];
   }
@@ -52,15 +52,21 @@ export class TaskService {
   }
 
   TaskSelector(id: string, time: string, status: boolean) {
-    this.taskToTimer = this.TodayTasksList.filter(task => task._id === id)[0]
-    if(time === '0'){
-      null
-    }else{
-      this.taskToTimer.leftTime = time;
+    this.taskToTimer = this.TodayTasksList.filter((task) => task._id === id)[0];
+    if (time === "0") {
+      null;
+    } else {
+      if (time === "00:00:00") {
+        console.log('Hello')
+        null;
+      } else {
+        this.taskToTimer.leftTime = time;
+        console.log(time);
+      }
     }
     this.taskToTimer.active = !status;
-    this.ActiveTask.taskid = id
-    this.ActiveTask.status = !status
+    this.ActiveTask.status = !status;
+    this.ActiveTask.taskid = id;
     this.TaskSubject.next(this.taskToTimer);
   }
 

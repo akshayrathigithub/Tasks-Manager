@@ -4,5 +4,7 @@ export class Task{
     priority:  string;
     totalTime:  string;
     leftTime:  string;
-    active: boolean
+    active: boolean;
+    status: string;
+    created: number;
   }

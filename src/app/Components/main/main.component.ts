@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   } = {
     ring: 0,
     task: "Please Select task from task list",
-    timer: "00:00:00",
+    timer: "--:--:--",
     id: "-1",
     status: false,
   };
@@ -36,7 +36,10 @@ export class MainComponent implements OnInit {
       priority: '',
       totalTime: '',
       leftTime: '',
-      active: false}
+      active: false,
+      status: '',
+      created: -1
+    }
   }
 
   Clicked(Name: string) {
@@ -46,12 +49,14 @@ export class MainComponent implements OnInit {
     private TaskArr: TaskService,
     private TimeService: ConvertTimeService
   ) {
-
     this.TaskArr.Task$.subscribe((res: Task) => {
       this.Status = res.active;
       this.TOTALSEC = this.TimeService.getSeconds(res.totalTime);
       this.TotalSec = this.TimeService.getSeconds(res.leftTime);
-      this.TimeRemaining(res);
+      console.log(res.totalTime, res.leftTime)
+      if(this.TotalSec > 0){
+        this.TimeRemaining(res);
+      }
     });
 
     this.TaskArr.PopUp$.subscribe((modal: any) => {
@@ -118,7 +123,7 @@ export class MainComponent implements OnInit {
 
   ModalAction(ActionType: string) {
     if(ActionType == "TimesUp"){
-      this.TaskArr.getTaskUpdated(this.ModalSelector.task)
+      // this.TaskArr.getTaskUpdated(this.ModalSelector.task)
       this.PopUpModal()
     }else if(ActionType === "Completed"){
       this.TaskArr.getTaskUpdated(this.ModalSelector.task)

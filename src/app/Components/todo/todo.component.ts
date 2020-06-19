@@ -28,6 +28,7 @@ export class TodoComponent implements OnInit {
 
   SetTime(id: string, time: string, status: boolean) {
     let task = this.TaskArr.getActiveTask();
+    console.log(task.status)
     if (task.status) {
       if (task.taskid === id) {
         this.TaskArr.TaskSelector(id, time, status)
@@ -35,7 +36,7 @@ export class TodoComponent implements OnInit {
         this.PopUp(0);
       }
     } else {
-      this.TaskArr.TaskSelector(id, time='0', status)
+      this.TaskArr.TaskSelector(id, time ='0', status)
     }
   }
 
