@@ -60,7 +60,7 @@
   #TimerWrapper {
     position: absolute;
     top: 37%;
-    left: calc(100% - 75px);
+    left: calc(100% - 630px);
     text-align: center;
     color: white;
     width: 18rem;
