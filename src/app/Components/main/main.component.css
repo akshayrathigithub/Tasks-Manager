@@ -396,11 +396,13 @@
 
   .Controller {
     width: 30%;
-    height: 100%;
+    height: 90%;
     background-color: #242c4c;
     border-radius: 0px 25px 25px 0px;
-    padding-top: 5rem;
+    padding-top: 2rem;
+    margin-top: 4rem;
     right: -32%;
+    transition: all 0.6s ease-in-out;
     position: absolute;
   }
   .ControlBtn {
@@ -444,18 +446,18 @@
   .BtnWrapper {
     width: 3rem;
     height: 2.2rem;
-    background-color: red;
-    position: relative;
+    position: absolute;
     display: flex;
-    /* left: 0px; */
-    float: right;
+    top: 2%;
+    right: 2%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
   .Bar-1 {
     height: 2px;
-    width: 90%;
+    width: 85%;
     background-color: white;
     border-radius: 2px;
     position: absolute;
@@ -465,38 +467,38 @@
   }
   .Bar-2 {
     height: 2px;
-    width: 90%;
+    width: 85%;
     background-color: white;
     display: block;
     border-radius: 2px;
-    top: 13px;
+    top: 15px;
     position: absolute;
     opacity: 1;
     transition: all 0.2s;
   }
   .Bar-3 {
     height: 2px;
-    width: 90%;
+    width: 85%;
     background-color: white;
     border-radius: 2px;
-    top: 21px;
+    top: 25px;
     position: absolute;
     transform: rotateZ(0deg);
     transition: all 0.2s ease-in-out;
   }
   .AddBar-1 {
-    top: 37px;
+    top: 16px;
     left: 5px;
-    background-color: yellow;
+    background-color: white;
     transform: rotateZ(45deg);
   }
   .AddBar-2 {
     opacity: 0;
   }
   .AddBar-3 {
-    top: 37px;
+    top: 16px;
     left: 5px;
-    background-color: yellow;
+    background-color: white;
     transform: rotateZ(-45deg);
   }
 }
@@ -606,11 +608,13 @@
 
   .Controller {
     width: 30%;
-    height: 100%;
+    height: 90%;
     background-color: #242c4c;
     border-radius: 0px 25px 25px 0px;
-    padding-top: 5rem;
+    padding-top: 2rem;
+    margin-top: 4rem;
     right: -32%;
+    transition: all 0.6s ease-in-out;
     position: absolute;
   }
   .ControlBtn {
@@ -758,11 +762,13 @@
 
   .Controller {
     width: 30%;
-    height: 100%;
+    height: 90%;
     background-color: #242c4c;
     border-radius: 0px 25px 25px 0px;
-    padding-top: 5rem;
+    padding-top: 2rem;
+    margin-top: 4rem;
     right: -32%;
+    transition: all 0.6s ease-in-out;
     position: absolute;
   }
   .ControlBtn {
@@ -803,6 +809,64 @@
     height: 100%;
     transform: rotate(90deg);
   }
+  .BtnWrapper {
+    width: 3rem;
+    height: 2.2rem;
+    position: absolute;
+    display: flex;
+    top: 2%;
+    right: 2%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .Bar-1 {
+    height: 2px;
+    width: 85%;
+    background-color: white;
+    border-radius: 2px;
+    position: absolute;
+    top: 5px;
+    transform: rotateZ(0deg);
+    transition: all 0.2s ease-in-out;
+  }
+  .Bar-2 {
+    height: 2px;
+    width: 85%;
+    background-color: white;
+    display: block;
+    border-radius: 2px;
+    top: 15px;
+    position: absolute;
+    opacity: 1;
+    transition: all 0.2s;
+  }
+  .Bar-3 {
+    height: 2px;
+    width: 85%;
+    background-color: white;
+    border-radius: 2px;
+    top: 25px;
+    position: absolute;
+    transform: rotateZ(0deg);
+    transition: all 0.2s ease-in-out;
+  }
+  .AddBar-1 {
+    top: 16px;
+    left: 5px;
+    background-color: white;
+    transform: rotateZ(45deg);
+  }
+  .AddBar-2 {
+    opacity: 0;
+  }
+  .AddBar-3 {
+    top: 16px;
+    left: 5px;
+    background-color: white;
+    transform: rotateZ(-45deg);
+  }
 }
 
 /* 
@@ -819,6 +883,75 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+  }
+  .ModalWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ModalInitial {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 32%;
+    height: 28%;
+    background-color: #242c4c;
+    border: solid 2px #f66fb3;
+    border-radius: 12px;
+    z-index: 3;
+    color: white;
+    box-shadow: 0 0 25px 0px #1b2838;
+    transition: all 2s ease-in-out;
+  }
+  .Btn {
+    width: 5rem;
+    background-color: red;
+  }
+
+  .ModalAfter {
+    width: 32%;
+    height: 28%;
+  }
+  .ModalHeader {
+    width: 70%;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10% 0% 0% 5%;
+  }
+  .ModalText {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5%;
+    color: #bbb2cf;
+  }
+  .Icon {
+    color: #f66fb3;
+    font-size: 60px;
+    margin: 12% 0% 0% 8%;
+  }
+  .ModalBtn {
+    width: 30%;
+    height: 2.5rem;
+    background-color: #f66fb3;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: 5% 0% 0% 30%;
+  }
+  .ModalClose {
+    position: absolute;
+    color: #f66fb3;
+    top: 3%;
+    left: 92%;
+    font-size: 30px;
+    cursor: pointer;
   }
   .Card {
     width: 98%;
@@ -841,16 +974,18 @@
 
   .Controller {
     width: 30%;
-    height: 100%;
+    height: 85%;
     background-color: #242c4c;
     border-radius: 0px 25px 25px 0px;
-    padding-top: 5rem;
+    padding-top: 1.5rem;
+    margin-top: 15%;
     right: -32%;
+    transition: all 0.6s ease-in-out;
     position: absolute;
   }
   .ControlBtn {
     width: 100%;
-    height: 4rem;
+    height: 3.5rem;
     display: flex;
     flex-direction: row;
     cursor: pointer;
@@ -865,9 +1000,9 @@
     width: 98.5%;
     display: flex;
     align-items: center;
-    padding-left: 0.85rem;
+    padding-left: 0.5rem;
     color: #fff;
-    font-size: 16px;
+    font-size: 12px;
   }
   .Active .Border {
     background-color: #f66fb3;
@@ -879,11 +1014,69 @@
     width: 93%;
     height: 46%;
     padding: 1% 0% 0% 7%;
-    transform: scale(1.8);
+    transform: scale(1.5);
   }
   .SvgBg > img {
     width: 100%;
     height: 100%;
     transform: rotate(90deg);
+  }
+  .BtnWrapper {
+    width: 3rem;
+    height: 2.2rem;
+    position: absolute;
+    display: flex;
+    top: 2%;
+    right: 2%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .Bar-1 {
+    height: 2px;
+    width: 85%;
+    background-color: white;
+    border-radius: 2px;
+    position: absolute;
+    top: 5px;
+    transform: rotateZ(0deg);
+    transition: all 0.2s ease-in-out;
+  }
+  .Bar-2 {
+    height: 2px;
+    width: 85%;
+    background-color: white;
+    display: block;
+    border-radius: 2px;
+    top: 15px;
+    position: absolute;
+    opacity: 1;
+    transition: all 0.2s;
+  }
+  .Bar-3 {
+    height: 2px;
+    width: 85%;
+    background-color: white;
+    border-radius: 2px;
+    top: 25px;
+    position: absolute;
+    transform: rotateZ(0deg);
+    transition: all 0.2s ease-in-out;
+  }
+  .AddBar-1 {
+    top: 16px;
+    left: 5px;
+    background-color: white;
+    transform: rotateZ(45deg);
+  }
+  .AddBar-2 {
+    opacity: 0;
+  }
+  .AddBar-3 {
+    top: 16px;
+    left: 5px;
+    background-color: white;
+    transform: rotateZ(-45deg);
   }
 }

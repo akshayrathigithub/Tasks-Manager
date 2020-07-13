@@ -89,13 +89,13 @@
         </div>
       </div>
     </div>
-    <div class="BtnWrapper">
-      <div class="Bar-1"></div>
-      <div class="Bar-2"></div>
-      <div class="Bar-3"></div>
+    <div class="BtnWrapper" (click)="Toggle()">
+      <div [class]="ToggleBtn ? 'Bar-1' : 'Bar-1 AddBar-1'"></div>
+      <div [class]="ToggleBtn ? 'Bar-2' : 'Bar-2 AddBar-2'"></div>
+      <div [class]="ToggleBtn ? 'Bar-3' : 'Bar-3 AddBar-3'"></div>
     </div>
 
-    <div class="Controller">
+    <div class="Controller" [style.right]="ToggleBtn ? '-32%' : '0%'">
       <div
         [ngClass]="Component === 'Task' ? 'ControlBtn Active' : 'ControlBtn'"
         (click)="Clicked('Task')"
