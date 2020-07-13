@@ -38,6 +38,7 @@
     height: 30rem;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .Timer {
     width: 480px;
@@ -59,8 +60,6 @@
   }
   #TimerWrapper {
     position: absolute;
-    top: 37%;
-    left: calc(100% - 630px);
     text-align: center;
     color: white;
     width: 18rem;
@@ -137,6 +136,130 @@
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+  #TimerDivWrapper {
+    width: 100%;
+    height: 100%;
+  }
+  #Header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0% 1% 0%;
+  }
+  #Header p {
+    font-size: 36px;
+    color: #d9d9d9;
+  }
+  #TaskHeader {
+    width: 100%;
+    height: 2.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 0% 1% 0%;
+  }
+  #TaskHeader p {
+    font-size: 25px;
+    color: #f66fb3;
+  }
+  #TimerDiv {
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Timer {
+    width: 480px;
+    height: 480px;
+  }
+  .bg {
+    fill: #242c4c;
+    paint-order: fill;
+    fill-opacity: 1;
+  }
+  .ring {
+    stroke: #f66fb3;
+    stroke-width: 10;
+    paint-order: stroke;
+    fill-opacity: 0;
+    stroke-dasharray: 200px, 300px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+  }
+  #TimerWrapper {
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 18rem;
+  }
+  #TimerText {
+    font-size: 22px;
+    color: #d9d9d9;
+    width: 18rem;
+  }
+  #TimerTime {
+    font-size: 4rem;
+    font-family: "Assistant", sans-serif;
+    color: #f66fb3;
+    line-height: 4rem;
+    width: 18rem;
+  }
+  #BtnRow {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  #BtnWrapper {
+    width: 5rem;
+    height: 4rem;
+    box-shadow: 0px 0px 12px 5px #242c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #f66fb3;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .alertWrapper {
+    position: absolute;
+    left: 57%;
+    top: 0%;
+    width: 12rem;
+    height: 3.5rem;
+    background-color: #f66fb3;
+    border-radius: 4px;
+    padding: 9px 6px 0px 6px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .alertActive {
+    opacity: 1;
+  }
+  .alertWrapper::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 12px solid #f66fb3;
+    border-bottom: 8px solid transparent;
+  }
+  .alertHeader {
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+  }
 }
 
 /* 
@@ -145,6 +268,130 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  #TimerDivWrapper {
+    width: 100%;
+    height: 100%;
+  }
+  #Header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0% 1% 0%;
+  }
+  #Header p {
+    font-size: 36px;
+    color: #d9d9d9;
+  }
+  #TaskHeader {
+    width: 100%;
+    height: 2.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 0% 1% 0%;
+  }
+  #TaskHeader p {
+    font-size: 25px;
+    color: #f66fb3;
+  }
+  #TimerDiv {
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Timer {
+    width: 480px;
+    height: 480px;
+  }
+  .bg {
+    fill: #242c4c;
+    paint-order: fill;
+    fill-opacity: 1;
+  }
+  .ring {
+    stroke: #f66fb3;
+    stroke-width: 10;
+    paint-order: stroke;
+    fill-opacity: 0;
+    stroke-dasharray: 200px, 300px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+  }
+  #TimerWrapper {
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 18rem;
+  }
+  #TimerText {
+    font-size: 22px;
+    color: #d9d9d9;
+    width: 18rem;
+  }
+  #TimerTime {
+    font-size: 4rem;
+    font-family: "Assistant", sans-serif;
+    color: #f66fb3;
+    line-height: 4rem;
+    width: 18rem;
+  }
+  #BtnRow {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  #BtnWrapper {
+    width: 5rem;
+    height: 4rem;
+    box-shadow: 0px 0px 12px 5px #242c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #f66fb3;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .alertWrapper {
+    position: absolute;
+    left: 57%;
+    top: 0%;
+    width: 12rem;
+    height: 3.5rem;
+    background-color: #f66fb3;
+    border-radius: 4px;
+    padding: 9px 6px 0px 6px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .alertActive {
+    opacity: 1;
+  }
+  .alertWrapper::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 12px solid #f66fb3;
+    border-bottom: 8px solid transparent;
+  }
+  .alertHeader {
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+  }
 }
 
 /* 
@@ -153,6 +400,130 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #TimerDivWrapper {
+    width: 100%;
+    height: 100%;
+  }
+  #Header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0% 1% 0%;
+  }
+  #Header p {
+    font-size: 36px;
+    color: #d9d9d9;
+  }
+  #TaskHeader {
+    width: 100%;
+    height: 2.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 0% 1% 0%;
+  }
+  #TaskHeader p {
+    font-size: 25px;
+    color: #f66fb3;
+  }
+  #TimerDiv {
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Timer {
+    width: 480px;
+    height: 480px;
+  }
+  .bg {
+    fill: #242c4c;
+    paint-order: fill;
+    fill-opacity: 1;
+  }
+  .ring {
+    stroke: #f66fb3;
+    stroke-width: 10;
+    paint-order: stroke;
+    fill-opacity: 0;
+    stroke-dasharray: 200px, 300px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+  }
+  #TimerWrapper {
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 18rem;
+  }
+  #TimerText {
+    font-size: 22px;
+    color: #d9d9d9;
+    width: 18rem;
+  }
+  #TimerTime {
+    font-size: 4rem;
+    font-family: "Assistant", sans-serif;
+    color: #f66fb3;
+    line-height: 4rem;
+    width: 18rem;
+  }
+  #BtnRow {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  #BtnWrapper {
+    width: 5rem;
+    height: 4rem;
+    box-shadow: 0px 0px 12px 5px #242c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #f66fb3;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .alertWrapper {
+    position: absolute;
+    left: 57%;
+    top: 0%;
+    width: 12rem;
+    height: 3.5rem;
+    background-color: #f66fb3;
+    border-radius: 4px;
+    padding: 9px 6px 0px 6px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .alertActive {
+    opacity: 1;
+  }
+  .alertWrapper::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 12px solid #f66fb3;
+    border-bottom: 8px solid transparent;
+  }
+  .alertHeader {
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+  }
 }
 
 /* 
@@ -161,6 +532,130 @@
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
+  #TimerDivWrapper {
+    width: 100%;
+    height: 100%;
+  }
+  #Header {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0% 1% 0%;
+  }
+  #Header p {
+    font-size: 25px;
+    color: #d9d9d9;
+  }
+  #TaskHeader {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 0% 1% 0%;
+  }
+  #TaskHeader p {
+    font-size: 20px;
+    color: #f66fb3;
+  }
+  #TimerDiv {
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Timer {
+    width: 480px;
+    height: 480px;
+  }
+  .bg {
+    fill: #242c4c;
+    paint-order: fill;
+    fill-opacity: 1;
+  }
+  .ring {
+    stroke: #f66fb3;
+    stroke-width: 10;
+    paint-order: stroke;
+    fill-opacity: 0;
+    stroke-dasharray: 200px, 300px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+  }
+  #TimerWrapper {
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 18rem;
+  }
+  #TimerText {
+    font-size: 22px;
+    color: #d9d9d9;
+    width: 18rem;
+  }
+  #TimerTime {
+    font-size: 4rem;
+    font-family: "Assistant", sans-serif;
+    color: #f66fb3;
+    line-height: 4rem;
+    width: 18rem;
+  }
+  #BtnRow {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  #BtnWrapper {
+    width: 5rem;
+    height: 4rem;
+    box-shadow: 0px 0px 12px 5px #242c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #f66fb3;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .alertWrapper {
+    position: absolute;
+    left: 57%;
+    top: 0%;
+    width: 12rem;
+    height: 3.5rem;
+    background-color: #f66fb3;
+    border-radius: 4px;
+    padding: 9px 6px 0px 6px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .alertActive {
+    opacity: 1;
+  }
+  .alertWrapper::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 12px solid #f66fb3;
+    border-bottom: 8px solid transparent;
+  }
+  .alertHeader {
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+  }
 }
 
 /* 
@@ -169,4 +664,128 @@
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
+  #TimerDivWrapper {
+    width: 100%;
+    height: 100%;
+  }
+  #Header {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0% 1% 0%;
+  }
+  #Header p {
+    font-size: 22px;
+    color: #d9d9d9;
+  }
+  #TaskHeader {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0% 5% 0%;
+  }
+  #TaskHeader p {
+    font-size: 18px;
+    color: #f66fb3;
+  }
+  #TimerDiv {
+    position: relative;
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Timer {
+    width: 480px;
+    height: 480px;
+  }
+  .bg {
+    fill: #242c4c;
+    paint-order: fill;
+    fill-opacity: 1;
+  }
+  .ring {
+    stroke: #f66fb3;
+    stroke-width: 10;
+    paint-order: stroke;
+    fill-opacity: 0;
+    stroke-dasharray: 200px, 300px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+  }
+  #TimerWrapper {
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 18rem;
+  }
+  #TimerText {
+    font-size: 18px;
+    color: #d9d9d9;
+    width: 18rem;
+  }
+  #TimerTime {
+    font-size: 40px;
+    font-family: "Assistant", sans-serif;
+    color: #f66fb3;
+    line-height: 4rem;
+    width: 18rem;
+  }
+  #BtnRow {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  #BtnWrapper {
+    width: 5rem;
+    height: 4rem;
+    box-shadow: 0px 0px 12px 5px #242c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #f66fb3;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .alertWrapper {
+    position: absolute;
+    left: 57%;
+    top: 0%;
+    width: 6rem;
+    height: 5rem;
+    background-color: #f66fb3;
+    border-radius: 5px;
+    padding: 9px 6px 0px 6px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .alertActive {
+    opacity: 1;
+  }
+  .alertWrapper::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 12px solid #f66fb3;
+    border-bottom: 8px solid transparent;
+  }
+  .alertHeader {
+    font-size: 12px;
+    color: #000;
+    font-weight: 500;
+  }
 }
