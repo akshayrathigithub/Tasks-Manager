@@ -75,6 +75,9 @@ export class CreateTaskComponent implements OnInit {
     }
     let time: string = `${this.H_1}${this.H_2}:${this.M_1}${this.M_2}:${this.S_1}${this.S_2}`
     let date = new Date()
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
     this.Task = {
       name: this.taskName,
       priority: priority,
@@ -82,7 +85,7 @@ export class CreateTaskComponent implements OnInit {
       totalTime: time,
       leftTime: time,
       status: "OnGoing",
-      created: date,
+      created: `${day}/${month}/${year}`,
     }
     this.task.setTask(this.Task)
     this.task.ComponentSelector("Task")

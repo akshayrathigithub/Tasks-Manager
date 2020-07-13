@@ -45,28 +45,27 @@ export class TaskService {
       let YearTask = []
       let date = new Date()
       let day = date.getDate()
-      let month = date.getMonth()
+      let month = date.getMonth() + 1
       let year = date.getFullYear()
       TotalTasks.forEach((task) => {
-        console.log(task.created)
-        if (
-          task.created.getDate() === day &&
-          task.created.getMonth() === month &&
-          task.created.getFullYear() === year
-        ) {
+        let DateInfo = task.created.split("/")
+        let TaskDay = parseInt(DateInfo[0])
+        let TaskMonth = parseInt(DateInfo[1])
+        let TaskYear = parseInt(DateInfo[2])
+        if (TaskDay === day && TaskMonth === month && TaskYear === year) {
           currTask.push(task)
         } else {
           prevTask.push(task)
-          if (task.created.getFullYear() === year) {
+          if (TaskYear === year) {
             YearTask.push(task)
-            if (task.created.getMonth() === month) {
+            if (TaskMonth === month) {
               lastMonthTask.push(task)
               if (day <= 7) {
-                if (task.created.getDate() >= 1 && task.created.getDate() <= day) {
+                if (TaskDay >= 1 && TaskDay <= day) {
                   lastWeekTask.push(task)
                 }
               } else {
-                if (task.created.getDate() >= day - 7 && task.created.getDate() <= day) {
+                if (TaskDay >= day - 7 && TaskDay <= day) {
                   lastWeekTask.push(task)
                 }
               }
@@ -77,6 +76,9 @@ export class TaskService {
       this.TaskArrSubject.next({
         CurrentTasks: currTask,
         PreviousTasks: prevTask,
+        LastWeekTasks: lastWeekTask,
+        LastMonthTasks: lastMonthTask,
+        LastYearTasks: YearTask,
       })
       this.TodayTasksList = [...currTask]
     })
