@@ -61,7 +61,15 @@ export class TaskService {
             YearTask.push(task)
             if (task.created.getMonth() === month) {
               lastMonthTask.push(task)
-              // if(task.created.getDate() === )
+              if (day <= 7) {
+                if (task.created.getDate() >= 1 && task.created.getDate() <= day) {
+                  lastWeekTask.push(task)
+                }
+              } else {
+                if (task.created.getDate() >= day - 7 && task.created.getDate() <= day) {
+                  lastWeekTask.push(task)
+                }
+              }
             }
           }
         }
