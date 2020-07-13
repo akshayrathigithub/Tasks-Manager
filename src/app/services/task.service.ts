@@ -1,115 +1,122 @@
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { Task } from "../modules/taskModule";
+import { Injectable } from "@angular/core"
+import { Subject } from "rxjs"
+import { HttpClient } from "@angular/common/http"
+import { Task } from "../modules/taskModule"
 
 @Injectable({
   providedIn: "root",
 })
 export class TaskService {
-  ComponentSubject = new Subject<String>();
-  Component$ = this.ComponentSubject.asObservable();
-  TaskArrSubject = new Subject<object>();
-  TaskArr$ = this.TaskArrSubject.asObservable();
-  TaskSubject = new Subject<object>();
-  Task$ = this.TaskSubject.asObservable();
-  PopUpSubject = new Subject<object>();
-  PopUp$ = this.PopUpSubject.asObservable();
-  taskToTimer: Task;
-  TodayTasksList: Task[];
+  ComponentSubject = new Subject<String>()
+  Component$ = this.ComponentSubject.asObservable()
+  TaskArrSubject = new Subject<object>()
+  TaskArr$ = this.TaskArrSubject.asObservable()
+  TaskSubject = new Subject<object>()
+  Task$ = this.TaskSubject.asObservable()
+  PopUpSubject = new Subject<object>()
+  PopUp$ = this.PopUpSubject.asObservable()
+  taskToTimer: Task
+  TodayTasksList: Task[]
   ActiveTask: {
-    taskid: string;
-    status: boolean;
+    taskid: string
+    status: boolean
   } = {
     taskid: "-1",
     status: false,
-  };
+  }
 
   constructor(private http: HttpClient) {
-    this.getTasks();
+    this.getTasks()
   }
 
   setTask(Task: Task) {
-    this.http
-      .post("http://localhost:1234/task-manager/create-task", Task)
-      .subscribe((res) => {
-        this.getTasks();
-      });
+    this.http.post("http://localhost:1234/task-manager/create-task", Task).subscribe((res) => {
+      this.getTasks()
+    })
   }
 
   getTasks() {
-    this.http
-      .get("http://localhost:1234/task-manager/get-tasks")
-      .subscribe((res: any) => {
-        const TotalTasks = [...res.posts];
-        let currTask = [];
-        let prevTask = [];
-        let date = new Date();
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        TotalTasks.forEach((task) => {
-          if (task.created === `${day}/${month}/${year}`) {
-            currTask.push(task);
-          } else {
-            prevTask.push(task);
+    this.http.get("http://localhost:1234/task-manager/get-tasks").subscribe((res: any) => {
+      const TotalTasks = [...res.posts]
+      let currTask = []
+      let prevTask = []
+      let lastWeekTask = []
+      let lastMonthTask = []
+      let YearTask = []
+      let date = new Date()
+      let day = date.getDate()
+      let month = date.getMonth()
+      let year = date.getFullYear()
+      TotalTasks.forEach((task) => {
+        console.log(task.created)
+        if (
+          task.created.getDate() === day &&
+          task.created.getMonth() === month &&
+          task.created.getFullYear() === year
+        ) {
+          currTask.push(task)
+        } else {
+          prevTask.push(task)
+          if (task.created.getFullYear() === year) {
+            YearTask.push(task)
+            if (task.created.getMonth() === month) {
+              lastMonthTask.push(task)
+              // if(task.created.getDate() === )
+            }
           }
-        });
-        this.TaskArrSubject.next({
-          CurrentTasks: currTask,
-          PreviousTasks: prevTask,
-        });
-        this.TodayTasksList = [...currTask];
-      });
-    return [];
+        }
+      })
+      this.TaskArrSubject.next({
+        CurrentTasks: currTask,
+        PreviousTasks: prevTask,
+      })
+      this.TodayTasksList = [...currTask]
+    })
+    return []
   }
 
   getActiveTask() {
-    return this.ActiveTask;
+    return this.ActiveTask
   }
 
   TaskSelector(id: string, time: string, status: boolean) {
-    this.taskToTimer = this.TodayTasksList.filter((task) => task._id === id)[0];
+    this.taskToTimer = this.TodayTasksList.filter((task) => task._id === id)[0]
     if (time === "0") {
-      null;
+      null
     } else {
       if (time === "00:00:00") {
-        null;
+        null
       } else {
-        this.taskToTimer.leftTime = time;
+        this.taskToTimer.leftTime = time
       }
     }
-    this.taskToTimer.active = !status;
-    this.ActiveTask.status = !status;
-    this.ActiveTask.taskid = id;
-    this.TaskSubject.next(this.taskToTimer);
+    this.taskToTimer.active = !status
+    this.ActiveTask.status = !status
+    this.ActiveTask.taskid = id
+    this.TaskSubject.next(this.taskToTimer)
   }
 
   ModalSelector(modal: string, Task: Task) {
     if ((modal = "fa-trash fas")) {
-      this.PopUpSubject.next({ status: "RemoveTask", task: Task });
+      this.PopUpSubject.next({ status: "RemoveTask", task: Task })
     } else {
-      this.PopUpSubject.next({ status: "CompleteTask", task: Task });
+      this.PopUpSubject.next({ status: "CompleteTask", task: Task })
     }
   }
 
   getTaskDeleted(id: string) {
-    let Id: object = { key: id };
-    this.http
-      .post("http://localhost:1234/task-manager/delete-task", Id)
-      .subscribe((res) => {
-        this.getTasks();
-      });
+    let Id: object = { key: id }
+    this.http.post("http://localhost:1234/task-manager/delete-task", Id).subscribe((res) => {
+      this.getTasks()
+    })
   }
 
   getTaskUpdated(task: Task) {
-    this.http
-      .post("http://localhost:1234/task-manager/update-task", task)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    this.http.post("http://localhost:1234/task-manager/update-task", task).subscribe((res) => {
+      console.log(res)
+    })
   }
   ComponentSelector(component: string) {
-    this.ComponentSubject.next(component);
+    this.ComponentSubject.next(component)
   }
 }
