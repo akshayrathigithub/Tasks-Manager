@@ -85,7 +85,7 @@ export class MainComponent implements OnInit {
       if (Tasks.length === 0) {
         this.Component = "NoTaskFound"
       } else {
-        this.Component = "CreateTask"
+        this.Component = "Analytics"
       }
     })
   }
