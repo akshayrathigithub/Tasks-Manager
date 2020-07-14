@@ -7,6 +7,49 @@ import { Task } from "../modules/taskModule"
   providedIn: "root",
 })
 export class TaskService {
+  DummyArr = [
+    {
+      _id: "0",
+      name: "Task-1",
+      priority: "fas fa-arrow-alt-circle-down",
+      totalTime: "00:10:00",
+      leftTime: "00:10:00",
+      active: false,
+      status: "OnGoing",
+      created: "14/7/2020",
+    },
+    {
+      _id: "1",
+      name: "Task-2",
+      priority: "fas fa-arrow-alt-circle-down",
+      totalTime: "00:10:00",
+      leftTime: "00:10:00",
+      active: false,
+      status: "OnGoing",
+      created: "14/7/2020",
+    },
+    {
+      _id: "2",
+      name: "Task-3",
+      priority: "fas fa-arrow-alt-circle-down",
+      totalTime: "00:10:00",
+      leftTime: "00:10:00",
+      active: false,
+      status: "OnGoing",
+      created: "14/7/2020",
+    },
+    {
+      _id: "3",
+      name: "Task-4",
+      priority: "fas fa-arrow-alt-circle-down",
+      totalTime: "00:10:00",
+      leftTime: "00:10:00",
+      active: false,
+      status: "OnGoing",
+      created: "13/7/2020",
+    },
+  ]
+
   ComponentSubject = new Subject<String>()
   Component$ = this.ComponentSubject.asObservable()
   TaskArrSubject = new Subject<object>()
@@ -27,52 +70,57 @@ export class TaskService {
 
   constructor(private http: HttpClient) {
     this.getTasks()
+    console.log("123")
   }
 
   setTask(Task: Task) {
-    this.http.post("http://localhost:1234/task-manager/create-task", Task).subscribe((res) => {
-      this.getTasks()
-    })
+    this.DummyArr.push(Task)
+    this.getTasks()
+    // this.http.post("http://localhost:1234/task-manager/create-task", Task).subscribe((res) => {
+    //   this.getTasks()
+    // })
   }
 
   getTasks() {
-    this.http.get("http://localhost:1234/task-manager/get-tasks").subscribe((res: any) => {
-      const TotalTasks = [...res.posts]
-      let currTask = []
-      let prevTask = []
-      let lastWeekTask = []
-      let lastMonthTask = []
-      let YearTask = []
-      let date = new Date()
-      let day = date.getDate()
-      let month = date.getMonth() + 1
-      let year = date.getFullYear()
-      TotalTasks.forEach((task) => {
-        let DateInfo = task.created.split("/")
-        let TaskDay = parseInt(DateInfo[0])
-        let TaskMonth = parseInt(DateInfo[1])
-        let TaskYear = parseInt(DateInfo[2])
-        if (TaskDay === day && TaskMonth === month && TaskYear === year) {
-          currTask.push(task)
-        } else {
-          prevTask.push(task)
-          if (TaskYear === year) {
-            YearTask.push(task)
-            if (TaskMonth === month) {
-              lastMonthTask.push(task)
-              if (day <= 7) {
-                if (TaskDay >= 1 && TaskDay <= day) {
-                  lastWeekTask.push(task)
-                }
-              } else {
-                if (TaskDay >= day - 7 && TaskDay <= day) {
-                  lastWeekTask.push(task)
-                }
+    // this.http.get("http://localhost:1234/task-manager/get-tasks").subscribe((res: any) => {
+    // const TotalTasks = [...res.posts]
+    let TotalTasks = [...this.DummyArr]
+    let currTask = []
+    let prevTask = []
+    let lastWeekTask = []
+    let lastMonthTask = []
+    let YearTask = []
+    let date = new Date()
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+    TotalTasks.forEach((task) => {
+      let DateInfo = task.created.split("/")
+      let TaskDay = parseInt(DateInfo[0])
+      let TaskMonth = parseInt(DateInfo[1])
+      let TaskYear = parseInt(DateInfo[2])
+      if (TaskDay === day && TaskMonth === month && TaskYear === year) {
+        currTask.push(task)
+      } else {
+        prevTask.push(task)
+        if (TaskYear === year) {
+          YearTask.push(task)
+          if (TaskMonth === month) {
+            lastMonthTask.push(task)
+            if (day <= 7) {
+              if (TaskDay >= 1 && TaskDay <= day) {
+                lastWeekTask.push(task)
+              }
+            } else {
+              if (TaskDay >= day - 7 && TaskDay <= day) {
+                lastWeekTask.push(task)
               }
             }
           }
         }
-      })
+      }
+    })
+    setTimeout(() => {
       this.TaskArrSubject.next({
         CurrentTasks: currTask,
         PreviousTasks: prevTask,
@@ -80,9 +128,9 @@ export class TaskService {
         LastMonthTasks: lastMonthTask,
         LastYearTasks: YearTask,
       })
-      this.TodayTasksList = [...currTask]
-    })
-    return []
+    }, 30)
+    this.TodayTasksList = [...currTask]
+    // })
   }
 
   getActiveTask() {
@@ -115,10 +163,13 @@ export class TaskService {
   }
 
   getTaskDeleted(id: string) {
-    let Id: object = { key: id }
-    this.http.post("http://localhost:1234/task-manager/delete-task", Id).subscribe((res) => {
-      this.getTasks()
-    })
+    // let Id: object = { key: id }
+    // this.http.post("http://localhost:1234/task-manager/delete-task", Id).subscribe((res) => {
+    //   this.getTasks()
+    // })
+
+    this.DummyArr.splice(parseInt(id), 1)
+    this.getTasks()
   }
 
   getTaskUpdated(task: Task) {
