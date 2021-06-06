@@ -57,7 +57,6 @@ export class MainComponent implements OnInit {
       this.Status = res.active
       this.TOTALSEC = this.TimeService.getSeconds(res.totalTime)
       this.TotalSec = this.TimeService.getSeconds(res.leftTime)
-      console.log(res.totalTime, res.leftTime)
       if (this.TotalSec > 0) {
         this.TimeRemaining(res)
       }
@@ -117,7 +116,6 @@ export class MainComponent implements OnInit {
           this.ModalSelector.status = "TimeLimitCompleted"
           this.IsBlur = true
         }
-        console.log("Completed")
       } else {
         setTimeout(() => {
           this.TimeRemaining(task)

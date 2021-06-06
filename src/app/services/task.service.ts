@@ -70,7 +70,6 @@ export class TaskService {
 
   constructor(private http: HttpClient) {
     this.getTasks()
-    console.log("123")
   }
 
   setTask(Task: Task) {
@@ -174,7 +173,6 @@ export class TaskService {
 
   getTaskUpdated(task: Task) {
     this.http.post("http://localhost:1234/task-manager/update-task", task).subscribe((res) => {
-      console.log(res)
     })
   }
   ComponentSelector(component: string) {

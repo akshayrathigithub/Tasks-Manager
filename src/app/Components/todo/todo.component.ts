@@ -15,7 +15,6 @@ export class TodoComponent implements OnInit {
   @Input() Tasks: Task[]
 
   constructor(private TaskArr: TaskService) {
-    console.log(this.Tasks)
   }
 
   ngOnInit(): void {}
@@ -29,7 +28,6 @@ export class TodoComponent implements OnInit {
 
   SetTime(id: string, time: string, status: boolean) {
     let task = this.TaskArr.getActiveTask()
-    console.log(task.status)
     if (task.status) {
       if (task.taskid === id) {
         this.TaskArr.TaskSelector(id, time, status)
