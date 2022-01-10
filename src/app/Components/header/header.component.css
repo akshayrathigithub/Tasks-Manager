@@ -4,71 +4,14 @@
 */
 
 @media (min-width: 1281px) {
-
-
-}
-
-/* 
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-
-}
-
-/* 
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  
-}
-
-/* 
-  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  
-}
-
-/* 
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
-
-@media (min-width: 481px) and (max-width: 767px) {
-
-}
-
-/* 
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
-
-@media (min-width: 320px) and (max-width: 480px) {
-
-}
-
-#empty-artboard {
-  position: absolute;
-  top: 0%;
-  left: 5%;
-  width: 650px;
-  height: 550px;
-}
-.fa-image {
-  width: 52px;
-  height: 56px;
-  position: absolute;
-  top: 25%;
-  left: 25%;
-}
-.Msg{
+  #empty-artboard {
+    position: absolute;
+    top: -35px;
+    left: 20px;
+    width: 650px;
+    height: 550px;
+  }
+  .Msg {
     width: 20rem;
     height: 15rem;
     display: flex;
@@ -77,45 +20,150 @@
     position: absolute;
     top: 30%;
     left: 21%;
+  }
 }
-.Msg .Head {
-    text-align: center;
-}
-.Msg .Head .fa-images{
-    font-size: 45px;
-    margin-top: 15px;
-    color: white;
-}
-.Msg .Head p{
-    font-size: 18px;
-    margin-top: 1rem;
-    font-weight: 600;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #F0F0F0;
-}
-.Msg .text{
-    display: inline-block;
-    color: #F0F0F0;
-    font-size: 16px;
-    margin-top: 20px;
-    padding: 0rem 2.5rem;
-    text-align: center;
-}
-.Msg .AddBtn{
-    width: 9rem;
-    height: 2.5rem;
-    background-color: #F66FB3;
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #empty-artboard {
+    position: absolute;
+    top: -35px;
+    left: 20px;
+    width: 650px;
+    height: 550px;
+  }
+
+  .Msg {
+    width: 20rem;
+    height: 15rem;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border-radius: 20px;
-    color: #F0F0F0;
-    margin-top: 25px;
-    cursor: pointer;
+    position: absolute;
+    top: 30%;
+    left: 21%;
+  }
 }
-.Msg .AddBtn p{
-    margin-left: 6px;
-    font-weight: 600;
-    font-size: 15px;
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #empty-artboard {
+    position: absolute;
+    top: -25px;
+    left: 45px;
+    width: 600px;
+    height: 524px;
+  }
+
+  .Msg {
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 175px;
+    left: 210px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #empty-artboard {
+    position: absolute;
+    top: -25px;
+    left: 45px;
+    width: 600px;
+    height: 524px;
+  }
+
+  .Msg {
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 175px;
+    left: 210px;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+}
+
+.fa-image {
+  width: 52px;
+  height: 56px;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.Msg .Head {
+  text-align: center;
+}
+.Msg .Head .fa-images {
+  font-size: 45px;
+  margin-top: 15px;
+  color: white;
+}
+.Msg .Head p {
+  font-size: 18px;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+}
+.Msg .text {
+  display: inline-block;
+  color: #f0f0f0;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 0rem 2.5rem;
+  text-align: center;
+}
+.Msg .AddBtn {
+  width: 9rem;
+  height: 2.5rem;
+  background-color: #f66fb3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  color: #f0f0f0;
+  margin-top: 25px;
+  cursor: pointer;
+}
+.Msg .AddBtn p {
+  margin-left: 6px;
+  font-weight: 600;
+  font-size: 15px;
 }
