@@ -8,14 +8,15 @@ import { ConvertTimeService } from "src/app/services/convert-time.service"
   styleUrls: ["./create-task.component.css"],
 })
 export class CreateTaskComponent implements OnInit {
-  Btn: string = "Hour_1"
+  Btn: string = "Sec_1"
   PriorityVar: string = "Normal"
   taskName: string = ""
+  taskNameError: boolean = false;
   H_1: number = 0
   H_2: number = 0
   M_1: number = 0
   M_2: number = 0
-  S_1: number = 0
+  S_1: number = 5
   S_2: number = 0
   Task: any
   constructor(private task: TaskService, private timeService: ConvertTimeService) {}
@@ -24,6 +25,10 @@ export class CreateTaskComponent implements OnInit {
 
   BtnSelector(name: string) {
     this.Btn = name
+  }
+
+  taskNameChanged(event: Event){
+    this.taskNameError = false
   }
 
   PrioritySelector(priority: string) {
@@ -66,6 +71,10 @@ export class CreateTaskComponent implements OnInit {
   }
   Submit() {
     let priority: string = ""
+    if(!this.taskName){
+      this.taskNameError = true
+      return;
+    }
     if (this.PriorityVar === "Low") {
       priority = "fas fa-arrow-alt-circle-down"
     } else if (this.PriorityVar === "High") {

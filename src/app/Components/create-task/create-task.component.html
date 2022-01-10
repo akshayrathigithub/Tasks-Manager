@@ -4,9 +4,9 @@
   </div>
   <div class="TaskWrapper">
     <p class="text">Name</p>
-    <input type="text" placeholder="Add Task" [(ngModel)]="taskName" />
-  </div>
-  <div class="TaskWrapper">
+    <input type="text" placeholder="Add Task" [(ngModel)]="taskName" (ngModelChange)="taskNameChanged($event)" />
+    <span class="error-text" *ngIf="taskNameError">Task Name cannot be left empty</span>
+
     <p class="text">Time</p>
     <div class="SetTimer">
       <div
@@ -60,8 +60,7 @@
         <i class="fas fa-minus"></i>
       </div>
     </div>
-  </div>
-  <div class="TaskWrapper">
+
     <p class="text">Priority</p>
     <div class="SetPriority">
       <div
