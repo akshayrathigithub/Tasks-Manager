@@ -4,13 +4,15 @@
       <div class="Icon">
         <i class="fas fa-check-circle"></i>
       </div>
-      <div class="ModalClose" (click)="PopUpModal()"><i class="fas fa-times-circle"></i></div>
+      <div class="ModalClose" (click)="PopUpModal()">
+        <i class="fas fa-times-circle"></i>
+      </div>
       <div class="ModalHeader">
         <p>Have You Completed The Task ?</p>
         <div class="ModalText">
           <p>
-            Proceding will terminate this task and mark it with the status of Completion. You cannot
-            resume it again.
+            Proceding will terminate this task and mark it with the status of
+            Completion. You cannot resume it again.
           </p>
         </div>
         <div class="ModalBtn" (click)="ModalAction('Completed')">
@@ -19,7 +21,10 @@
       </div>
     </div>
   </div>
-  <div class="ModalWrapper" *ngIf="ModalSelector.status === 'TimeLimitCompleted'">
+  <div
+    class="ModalWrapper"
+    *ngIf="ModalSelector.status === 'TimeLimitCompleted'"
+  >
     <div class="ModalInitial">
       <div class="Icon">
         <i class="fas fa-exclamation-triangle"></i>
@@ -28,8 +33,8 @@
         <p>You have reached time limit !!!</p>
         <div class="ModalText">
           <p>
-            Since you couldn't complete task within time limit, the task will be saved with the
-            status of Failed !
+            Since you couldn't complete task within time limit, the task will be
+            saved with the status of Failed !
           </p>
         </div>
         <div class="ModalBtn" (click)="ModalAction('TimesUp')">
@@ -43,20 +48,22 @@
       <div class="Icon">
         <i class="fas fa-exclamation-circle"></i>
       </div>
-      <div class="ModalClose" (click)="PopUpModal()"><i class="fas fa-times-circle"></i></div>
+      <div class="ModalClose" (click)="PopUpModal()">
+        <i class="fas fa-times-circle"></i>
+      </div>
       <div class="ModalHeader">
         <p>Do you wants to Delete this Task ?</p>
         <div class="ModalText">
-          <p>Proceding will delete this task from Database. You cannot recover it again.</p>
+          <p>
+            Proceding will delete this task from Database. You cannot recover it
+            again.
+          </p>
         </div>
         <div class="ModalBtn" (click)="ModalAction('Deleted')">
           <p>Done!</p>
         </div>
       </div>
     </div>
-  </div>
-  <div class="SvgBg">
-    <img src="../../../assets/Background.svg" />
   </div>
   <div
     class="Card"
@@ -89,11 +96,6 @@
         </div>
       </div>
     </div>
-    <div class="BtnWrapper" (click)="Toggle()">
-      <div [class]="ToggleBtn ? 'Bar-1' : 'Bar-1 AddBar-1'"></div>
-      <div [class]="ToggleBtn ? 'Bar-2' : 'Bar-2 AddBar-2'"></div>
-      <div [class]="ToggleBtn ? 'Bar-3' : 'Bar-3 AddBar-3'"></div>
-    </div>
 
     <div class="Controller" [style.right]="ToggleBtn ? '-32%' : '0%'">
       <div
@@ -115,7 +117,9 @@
         </div>
       </div>
       <div
-        [ngClass]="Component === 'Analytics' ? 'ControlBtn Active' : 'ControlBtn'"
+        [ngClass]="
+          Component === 'Analytics' ? 'ControlBtn Active' : 'ControlBtn'
+        "
         (click)="Clicked('Analytics')"
       >
         <div class="Border"></div>
@@ -124,7 +128,9 @@
         </div>
       </div>
       <div
-        [ngClass]="Component === 'PrevTasks' ? 'ControlBtn Active' : 'ControlBtn'"
+        [ngClass]="
+          Component === 'PrevTasks' ? 'ControlBtn Active' : 'ControlBtn'
+        "
         (click)="Clicked('PrevTasks')"
       >
         <div class="Border"></div>
@@ -135,12 +141,3 @@
     </div>
   </div>
 </div>
-
-<!-- [ngStyle]="{
-    position: 'absolute',
-    top: '-5%',
-    left: '10%',
-    transform: 'scaleX(1.2)',
-    'z-index': '0',
-    filter: IsBlur ? 'blur(6px)' : 'blur(0px)'
-  }" -->
