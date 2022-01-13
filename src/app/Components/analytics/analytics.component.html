@@ -1,88 +1,118 @@
 <div id="optionWrapper">
-    <div class="Header">
-        <p>Analytics</p>
+  <div class="Header">
+    <p>Analytics</p>
+  </div>
+  <div id="CollectionSelector">
+    <div
+      [class]="
+        Selector === 'Weekly'
+          ? 'Selector Weekly SelectorActive'
+          : 'Selector Weekly'
+      "
+      (click)="SelectorCalled('Weekly')"
+    >
+      <p>Weekly</p>
     </div>
-    <div id="CollectionSelector">
-        <div [class]=" Selector === 'Weekly' ? 'Selector Weekly SelectorActive' : 'Selector Weekly'" (click)="SelectorCalled('Weekly')" >
-            <p>Weekly</p>
-        </div>
-        <div [class]=" Selector === 'Monthly' ? 'Selector SelectorActive' : 'Selector'" (click)="SelectorCalled('Monthly')">
-            <p>Monthly</p>
-        </div>
-        <div [class]=" Selector === 'Yearly' ? 'Selector Yearly SelectorActive' : 'Selector Yearly'" (click)="SelectorCalled('Yearly')">
-            <p>Yearly</p>
-        </div>
+    <div
+      [class]="Selector === 'Monthly' ? 'Selector SelectorActive' : 'Selector'"
+      (click)="SelectorCalled('Monthly')"
+    >
+      <p>Monthly</p>
     </div>
-    <div id="TasksWrapper">
-        <div id="TaskCard">
-            <div id="Icon"><i class="fas fa-plus-circle"></i></div>
-            <div id="Info">
-                <p id="Header">Total Tasks</p>
-                <p id="Text">100</p>
-            </div>
-        </div>
-        <div id="TaskCard">
-            <div id="Icon"><i class="fas fa-check-circle"></i></div>
-            <div id="Info">
-                <p id="Header">Complet. Task</p>
-                <p id="Text">100</p>
-            </div>
-        </div>
-        <div id="TaskCard">
-            <div id="Icon"><i class="fas fa-times-circle"></i></div>
-            <div id="Info">
-                <p id="Header">Incomplet. Task</p>
-                <p id="Text">100</p>
-            </div>
-        </div>
+    <div
+      [class]="
+        Selector === 'Yearly'
+          ? 'Selector Yearly SelectorActive'
+          : 'Selector Yearly'
+      "
+      (click)="SelectorCalled('Yearly')"
+    >
+      <p>Yearly</p>
     </div>
-    <div id="BigWrapper">
-        <div id="ChartWrapper">
-            <canvas id="myChart"></canvas>
-        </div>
-        <div id="DropDownWrapper">
-            <div (click)="DropDownClicked()" [ngStyle]="{
-                'width': '6.5rem',
-                'height': '2.5rem',
-                'min-height': '2.5rem',
-                'border-radius': '5px 5px 0px 0px',
-                'box-shadow': toggle ? '0px -5px 10px 0px #1b2838' : '0 0px 8px 0px #1b2838',
-                'z-index': 1,
-                'display': 'flex',
-                'justify-content': 'center',
-                'align-items': 'center',
-                'color': '#fff',
-                'cursor': 'pointer',
-                'margin-top': '10%' }">
-                <div><i [class]="FilterIcon"></i></div>
-                <div>{{FilterStatus}}</div>
-            </div>
-            <div [ngStyle]="{'width': '6.5rem',
-                'height': '7.2rem',
-                'border-radius': '0px 0px 5px 5px',
-                'box-shadow': '0px 5px 10px 0px #1b2838',
-                'z-index': toggle ? 1 : 0,
-                'display': toggle ? 'initial': 'none',
-                'background-color': '#2c3c56'
-            }">
-                <div class="items" (click)="SetFilterStatus('Normal','fas fa-arrow-alt-circle-right')">
-                    <div><i class="fas fa-arrow-alt-circle-right"></i></div>
-                    <div>Normal</div>
-                </div>
-                <div class="items" (click)="SetFilterStatus('High','fas fa-arrow-alt-circle-up')">
-                    <div><i class="fas fa-arrow-alt-circle-up"></i></div>
-                    <div>High</div>
-                </div>
-                <div class="items" (click)="SetFilterStatus('Low','fas fa-arrow-alt-circle-down')">
-                    <div><i class="fas fa-arrow-alt-circle-down"></i></div>
-                    <div>Low</div>
-                </div>
-            </div>
-        </div>
+  </div>
+  <div id="TasksWrapper">
+    <div id="TaskCard">
+      <div id="Icon"><i class="fas fa-plus-circle"></i></div>
+      <div id="Info">
+        <p id="Header">Total</p>
+        <p id="Text">100</p>
+      </div>
     </div>
-    <!-- <div id="ChartOption">
-        <div (click) ="ChartSelectorCalled('doughnut')" [class] = "ChartSelector === 'doughnut' ? ' chartWrapper chartactive': 'chartWrapper'" ><i class="fas fa-chart-pie"></i></div>
-        <div (click) ="ChartSelectorCalled('line')" [class] = "ChartSelector === 'line' ? 'chartWrapper chartactive': 'chartWrapper'" ><i class="fas fa-chart-line"></i></div>
-        <div (click) ="ChartSelectorCalled('bar')" [class] = "ChartSelector === 'bar' ? 'chartWrapper chartactive': 'chartWrapper'" ><i class="fas fa-chart-bar"></i></div>
-    </div> -->
+    <div id="TaskCard">
+      <div id="Icon"><i class="fas fa-check-circle"></i></div>
+      <div id="Info">
+        <p id="Header">Complete</p>
+        <p id="Text">100</p>
+      </div>
+    </div>
+    <div id="TaskCard">
+      <div id="Icon"><i class="fas fa-times-circle"></i></div>
+      <div id="Info">
+        <p id="Header">Incomplete</p>
+        <p id="Text">100</p>
+      </div>
+    </div>
+  </div>
+  <div id="BigWrapper">
+    <div id="ChartWrapper">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div id="DropDownWrapper">
+      <div
+        (click)="DropDownClicked()"
+        [ngStyle]="{
+          width: '6.5rem',
+          height: '2.5rem',
+          'min-height': '2.5rem',
+          'border-radius': '5px 5px 0px 0px',
+          'box-shadow': toggle
+            ? '0px -5px 10px 0px #1b2838'
+            : '0 0px 8px 0px #1b2838',
+          'z-index': 1,
+          display: 'flex',
+          'justify-content': 'center',
+          'align-items': 'center',
+          color: '#fff',
+          cursor: 'pointer',
+          'margin-top': '10%'
+        }"
+      >
+        <div><i [class]="FilterIcon"></i></div>
+        <div>{{ FilterStatus }}</div>
+      </div>
+      <div
+        [ngStyle]="{
+          width: '6.5rem',
+          height: '7.2rem',
+          'border-radius': '0px 0px 5px 5px',
+          'box-shadow': '0px 5px 10px 0px #1b2838',
+          'z-index': toggle ? 1 : 0,
+          display: toggle ? 'initial' : 'none',
+          'background-color': '#2c3c56'
+        }"
+      >
+        <div
+          class="items"
+          (click)="SetFilterStatus('Normal', 'fas fa-arrow-alt-circle-right')"
+        >
+          <div><i class="fas fa-arrow-alt-circle-right"></i></div>
+          <div>Normal</div>
+        </div>
+        <div
+          class="items"
+          (click)="SetFilterStatus('High', 'fas fa-arrow-alt-circle-up')"
+        >
+          <div><i class="fas fa-arrow-alt-circle-up"></i></div>
+          <div>High</div>
+        </div>
+        <div
+          class="items"
+          (click)="SetFilterStatus('Low', 'fas fa-arrow-alt-circle-down')"
+        >
+          <div><i class="fas fa-arrow-alt-circle-down"></i></div>
+          <div>Low</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

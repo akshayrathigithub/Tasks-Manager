@@ -1,155 +1,161 @@
+#optionWrapper {
+  width: 100%;
+  height: 100%;
+}
+.Header {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 0% 2.5% 0%;
+}
+.Header p {
+  font-size: 36px;
+  color: #d9d9d9;
+}
+#CollectionSelector {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #fff;
+}
+.Selector {
+  width: 20%;
+  height: 3rem;
+  box-shadow: 0 0 8px 0px #1b2838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Weekly {
+  border-radius: 15px 0px 0px 15px;
+}
+.Yearly {
+  border-radius: 0px 15px 15px 0px;
+}
+.SelectorActive {
+  border: 2px solid #f66fb3;
+  z-index: 1;
+}
+#TasksWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 4%;
+}
+#TaskCard {
+  width: 25%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 12px 3px #1b2838;
+  border-radius: 10px;
+  /* border: 2px solid #f66fb3; */
+  color: #f66fb3;
+  margin-right: 5%;
+}
+#TaskCard #Icon {
+  width: 30%;
+  height: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#TaskCard #Info {
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
+#Header {
+  margin-top: 15px;
+}
+#Text {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #fff;
+}
+#BigWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#ChartWrapper {
+  width: 75%;
+  margin: 3% 0% 0% 5%;
+}
+#ChartOption {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+.chartWrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 3px #1b2838;
+  font-size: 20px;
+  margin-right: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+.chartactive {
+  border: 2px solid #f66fb3;
+  color: #f66fb3;
+}
+#DropDownWrapper {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 35px;
+  margin-right: 5px;
+}
+.items {
+  width: 100%;
+  height: 2.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  transition: display 0.5s ease-in-out;
+}
+.items:hover {
+  border: 2px solid #f66fb3;
+  color: #f66fb3;
+}
+#DropDownWrapper .fas {
+  margin-right: 9px;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
 
 @media (min-width: 1281px) {
-  #optionWrapper {
-    width: 100%;
-    height: 100%;
-  }
-  .Header {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2.5% 0% 2.5% 0%;
-  }
-  .Header p {
-    font-size: 36px;
-    color: #d9d9d9;
-  }
-  #CollectionSelector {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
-  }
-  .Selector {
-    width: 20%;
-    height: 3rem;
-    box-shadow: 0 0 8px 0px #1b2838;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .Weekly {
-    border-radius: 15px 0px 0px 15px;
-  }
-  .Yearly {
-    border-radius: 0px 15px 15px 0px;
-  }
-  .SelectorActive {
-    border: 2px solid #f66fb3;
-    z-index: 1;
-  }
-  #TasksWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 4%;
-  }
-  #TaskCard {
-    width: 25%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 12px 3px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
-    margin-right: 5%;
-  }
-  #TaskCard #Icon {
-    width: 30%;
-    height: 100%;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #TaskCard #Info {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-  }
-  #Header {
-    margin-top: 15px;
-  }
-  #Text {
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
-  }
-  #BigWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  #ChartWrapper {
-    width: 80%;
-    margin: 3% 0% 0% 5%;
-  }
-  #ChartOption {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    padding-right: 10px;
-  }
-  .chartWrapper {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 3px #1b2838;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .chartactive {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
   #DropDownWrapper {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
-  }
-  .items {
-    width: 100%;
-    height: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
-  }
-  .items:hover {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
-  #DropDownWrapper .fas {
-    margin-right: 9px;
-    font-size: 20px;
-    margin-top: 4px;
+    margin-top: 35px;
+    margin-right: 5px;
   }
 }
 
@@ -159,152 +165,14 @@
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-  #optionWrapper {
-    width: 100%;
-    height: 100%;
-  }
-  .Header {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2.5% 0% 2.5% 0%;
-  }
-  .Header p {
-    font-size: 36px;
-    color: #d9d9d9;
-  }
-  #CollectionSelector {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
-  }
-  .Selector {
-    width: 20%;
-    height: 3rem;
-    box-shadow: 0 0 8px 0px #1b2838;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .Weekly {
-    border-radius: 15px 0px 0px 15px;
-  }
-  .Yearly {
-    border-radius: 0px 15px 15px 0px;
-  }
-  .SelectorActive {
-    border: 2px solid #f66fb3;
-    z-index: 1;
-  }
-  #TasksWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 4%;
-  }
-  #TaskCard {
-    width: 25%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 12px 3px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
-    margin-right: 5%;
-  }
-  #TaskCard #Icon {
-    width: 30%;
-    height: 100%;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #TaskCard #Info {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-  }
-  #Header {
-    margin-top: 15px;
-  }
-  #Text {
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
-  }
-  #BigWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  #ChartWrapper {
-    width: 80%;
-    margin: 3% 0% 0% 5%;
-  }
-  #ChartOption {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    padding-right: 10px;
-  }
-  .chartWrapper {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 3px #1b2838;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .chartactive {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
   #DropDownWrapper {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  .items {
-    width: 100%;
-    height: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
-  }
-  .items:hover {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
-  #DropDownWrapper .fas {
-    margin-right: 9px;
-    font-size: 20px;
-    margin-top: 4px;
+
+  #ChartWrapper {
+    width: 75%;
+    margin: 10px 0% 0% 40px;
   }
 }
 
@@ -314,152 +182,33 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  #optionWrapper {
-    width: 100%;
-    height: 100%;
-  }
   .Header {
-    width: 100%;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2.5% 0% 2.5% 0%;
+    margin: 10px 0%;
   }
-  .Header p {
-    font-size: 25px;
-    color: #d9d9d9;
+
+  #DropDownWrapper {
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  #CollectionSelector {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
-  }
-  .Selector {
-    width: 20%;
-    height: 3rem;
-    box-shadow: 0 0 8px 0px #1b2838;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .Weekly {
-    border-radius: 15px 0px 0px 15px;
-  }
-  .Yearly {
-    border-radius: 0px 15px 15px 0px;
-  }
-  .SelectorActive {
-    border: 2px solid #f66fb3;
-    z-index: 1;
-  }
+
   #TasksWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 4%;
-  }
-  #TaskCard {
-    width: 25%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 12px 3px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
-    margin-right: 5%;
-  }
-  #TaskCard #Icon {
-    width: 30%;
-    height: 100%;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #TaskCard #Info {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-  }
-  #Header {
     margin-top: 15px;
   }
-  #Text {
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
-  }
-  #BigWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
+
   #ChartWrapper {
-    width: 80%;
-    margin: 3% 0% 0% 5%;
+    width: 75%;
+    height: 100%;
+    margin: 10px 0% 0% 0px;
+    padding-left: 105px;
   }
-  #ChartOption {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    padding-right: 10px;
-  }
-  .chartWrapper {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 3px #1b2838;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .chartactive {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
+
   #DropDownWrapper {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  .items {
-    width: 100%;
-    height: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
-  }
-  .items:hover {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
-  #DropDownWrapper .fas {
-    margin-right: 9px;
-    font-size: 20px;
-    margin-top: 4px;
+  #myChart {
+    height: 289px !important;
+    width: 578px !important;
   }
 }
 
@@ -469,152 +218,33 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  #optionWrapper {
-    width: 100%;
-    height: 100%;
-  }
   .Header {
-    width: 100%;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2% 0% 2% 0%;
+    margin: 10px 0%;
   }
-  .Header p {
-    font-size: 25px;
-    color: #d9d9d9;
-  }
-  #CollectionSelector {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
-  }
-  .Selector {
-    width: 20%;
-    height: 3rem;
-    box-shadow: 0 0 8px 0px #1b2838;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .Weekly {
-    border-radius: 15px 0px 0px 15px;
-  }
-  .Yearly {
-    border-radius: 0px 15px 15px 0px;
-  }
-  .SelectorActive {
-    border: 2px solid #f66fb3;
-    z-index: 1;
-  }
-  #TasksWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 2%;
-  }
-  #TaskCard {
-    width: 25%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 12px 3px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
-    margin-right: 5%;
-  }
-  #TaskCard #Icon {
-    width: 30%;
-    height: 100%;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #TaskCard #Info {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-  }
-  #Header {
-    margin-top: 15px;
-  }
-  #Text {
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
-  }
-  #BigWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  #ChartWrapper {
-    width: 80%;
-    margin: 3% 0% 0% 5%;
-  }
-  #ChartOption {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 15px;
-    padding-right: 10px;
-  }
-  .chartWrapper {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 3px #1b2838;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .chartactive {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
+
   #DropDownWrapper {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  .items {
-    width: 100%;
-    height: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
+
+  #TasksWrapper {
+    margin-top: 15px;
   }
-  .items:hover {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
+
+  #ChartWrapper {
+    width: 75%;
+    height: 100%;
+    margin: 10px 0% 0% 0px;
+    padding-left: 105px;
   }
-  #DropDownWrapper .fas {
-    margin-right: 9px;
-    font-size: 20px;
-    margin-top: 4px;
+
+  #DropDownWrapper {
+    margin-top: 35px;
+    margin-right: 5px;
+  }
+  #myChart {
+    height: 289px !important;
+    width: 578px !important;
   }
 }
 
@@ -624,153 +254,33 @@
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
-  #optionWrapper {
-    width: 100%;
-    height: 100%;
-  }
   .Header {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2% 0% 2% 0%;
+    margin: 10px 0%;
   }
-  .Header p {
-    font-size: 22px;
-    color: #d9d9d9;
-  }
-  #CollectionSelector {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
-  }
-  .Selector {
-    width: 20%;
-    height: 3rem;
-    box-shadow: 0 0 8px 0px #1b2838;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .Weekly {
-    border-radius: 15px 0px 0px 15px;
-  }
-  .Yearly {
-    border-radius: 0px 15px 15px 0px;
-  }
-  .SelectorActive {
-    border: 2px solid #f66fb3;
-    z-index: 1;
-  }
-  #TasksWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 2%;
-  }
-  #TaskCard {
-    width: 30%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 12px 3px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
-    margin-right: 2%;
-    margin-left: 1%;
-  }
-  #TaskCard #Icon {
-    width: 30%;
-    height: 100%;
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #TaskCard #Info {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-  }
-  #Header {
-    margin-top: 10px;
-  }
-  #Text {
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
-  }
-  #BigWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  #ChartWrapper {
-    width: 80%;
-    margin: 3% 0% 0% 5%;
-  }
-  #ChartOption {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    padding-right: 10px;
-  }
-  .chartWrapper {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 3px #1b2838;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .chartactive {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
+
   #DropDownWrapper {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  .items {
-    width: 100%;
-    height: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
+
+  #TasksWrapper {
+    margin-top: 15px;
   }
-  .items:hover {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
+
+  #ChartWrapper {
+    width: 75%;
+    height: 100%;
+    margin: 35px 0 0;
+    padding-left: calc(15% - 30px);
   }
-  #DropDownWrapper .fas {
-    margin-right: 9px;
-    font-size: 20px;
-    margin-top: 4px;
+
+  #DropDownWrapper {
+    margin-top: 35px;
+    margin-right: 5px;
+  }
+  #myChart {
+    height: 250px !important;
+    width: 460px !important;
   }
 }
 
@@ -780,151 +290,70 @@
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  #optionWrapper {
-    width: 100%;
-    height: 100%;
-  }
   .Header {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2.5% 0% 2.5% 0%;
+    margin: 10px 0%;
   }
-  .Header p {
-    font-size: 36px;
-    color: #d9d9d9;
+
+  #DropDownWrapper {
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  #CollectionSelector {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #fff;
+
+  #TasksWrapper {
+    margin-top: 25px;
   }
+
   .Selector {
-    width: 20%;
+    width: 30%;
     height: 3rem;
     box-shadow: 0 0 8px 0px #1b2838;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
   }
-  .Weekly {
-    border-radius: 15px 0px 0px 15px;
-  }
-  .Yearly {
-    border-radius: 0px 15px 15px 0px;
-  }
-  .SelectorActive {
-    border: 2px solid #f66fb3;
-    z-index: 1;
-  }
-  #TasksWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 4%;
-  }
+
   #TaskCard {
-    width: 25%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 12px 3px #1b2838;
-    border-radius: 10px;
-    /* border: 2px solid #f66fb3; */
-    color: #f66fb3;
-    margin-right: 5%;
-  }
-  #TaskCard #Icon {
     width: 30%;
-    height: 100%;
-    font-size: 30px;
+    height: 5rem;
+    margin-right: 10px;
+    flex-direction: column;
+  }
+
+  #TaskCard #Icon {
+    width: 100%;
+    height: 50%;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   #TaskCard #Info {
-    width: 70%;
-    height: 100%;
-    text-align: center;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
   #Header {
-    margin-top: 15px;
+    margin-right: 10px;
+    margin-top: 0px;
   }
+
   #Text {
-    margin-top: 6px;
-    font-weight: 600;
-    color: #fff;
+    margin-top: 0px;
   }
-  #BigWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
+
   #ChartWrapper {
-    width: 80%;
-    margin: 3% 0% 0% 5%;
+    width: 75%;
+    height: 100%;
+    margin: 35px 0 0;
+    padding-left: calc(10% - 30px);
   }
-  #ChartOption {
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    padding-right: 10px;
-  }
-  .chartWrapper {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 3px #1b2838;
-    font-size: 20px;
-    margin-right: 15px;
-    cursor: pointer;
-    color: #fff;
-  }
-  .chartactive {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
+
   #DropDownWrapper {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5px;
+    margin-top: 35px;
+    margin-right: 5px;
   }
-  .items {
-    width: 100%;
-    height: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #fff;
-    transition: display 0.5s ease-in-out;
-  }
-  .items:hover {
-    border: 2px solid #f66fb3;
-    color: #f66fb3;
-  }
-  #DropDownWrapper .fas {
-    margin-right: 9px;
-    font-size: 20px;
-    margin-top: 4px;
+  #myChart {
+    height: 220px !important;
+    width: 350px !important;
   }
 }
