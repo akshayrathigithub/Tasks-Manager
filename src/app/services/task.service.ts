@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core"
-import { Subject } from "rxjs"
-import { HttpClient } from "@angular/common/http"
-import { Task } from "../modules/taskModule"
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Task } from "../modules/taskModule";
 
 @Injectable({
   providedIn: "root",
@@ -48,33 +48,33 @@ export class TaskService {
       status: "OnGoing",
       created: "13/7/2020",
     },
-  ]
+  ];
 
-  ComponentSubject = new Subject<String>()
-  Component$ = this.ComponentSubject.asObservable()
-  TaskArrSubject = new Subject<object>()
-  TaskArr$ = this.TaskArrSubject.asObservable()
-  TaskSubject = new Subject<object>()
-  Task$ = this.TaskSubject.asObservable()
-  PopUpSubject = new Subject<object>()
-  PopUp$ = this.PopUpSubject.asObservable()
-  taskToTimer: Task
-  TodayTasksList: Task[]
+  ComponentSubject = new Subject<String>();
+  Component$ = this.ComponentSubject.asObservable();
+  TaskArrSubject = new Subject<object>();
+  TaskArr$ = this.TaskArrSubject.asObservable();
+  TaskSubject = new Subject<object>();
+  Task$ = this.TaskSubject.asObservable();
+  PopUpSubject = new Subject<object>();
+  PopUp$ = this.PopUpSubject.asObservable();
+  taskToTimer: Task;
+  TodayTasksList: Task[];
   ActiveTask: {
-    taskid: string
-    status: boolean
+    taskid: string;
+    status: boolean;
   } = {
     taskid: "-1",
     status: false,
-  }
+  };
 
   constructor(private http: HttpClient) {
-    this.getTasks()
+    this.getTasks();
   }
 
   setTask(Task: Task) {
-    this.DummyArr.push(Task)
-    this.getTasks()
+    this.DummyArr.push(Task);
+    this.getTasks();
     // this.http.post("http://localhost:1234/task-manager/create-task", Task).subscribe((res) => {
     //   this.getTasks()
     // })
@@ -83,42 +83,42 @@ export class TaskService {
   getTasks() {
     // this.http.get("http://localhost:1234/task-manager/get-tasks").subscribe((res: any) => {
     // const TotalTasks = [...res.posts]
-    let TotalTasks = [...this.DummyArr]
-    let currTask = []
-    let prevTask = []
-    let lastWeekTask = []
-    let lastMonthTask = []
-    let YearTask = []
-    let date = new Date()
-    let day = date.getDate()
-    let month = date.getMonth() + 1
-    let year = date.getFullYear()
+    let TotalTasks = [...this.DummyArr];
+    let currTask = [];
+    let prevTask = [];
+    let lastWeekTask = [];
+    let lastMonthTask = [];
+    let YearTask = [];
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
     TotalTasks.forEach((task) => {
-      let DateInfo = task.created.split("/")
-      let TaskDay = parseInt(DateInfo[0])
-      let TaskMonth = parseInt(DateInfo[1])
-      let TaskYear = parseInt(DateInfo[2])
+      let DateInfo = task.created.split("/");
+      let TaskDay = parseInt(DateInfo[0]);
+      let TaskMonth = parseInt(DateInfo[1]);
+      let TaskYear = parseInt(DateInfo[2]);
       if (TaskDay === day && TaskMonth === month && TaskYear === year) {
-        currTask.push(task)
+        currTask.push(task);
       } else {
-        prevTask.push(task)
+        prevTask.push(task);
         if (TaskYear === year) {
-          YearTask.push(task)
+          YearTask.push(task);
           if (TaskMonth === month) {
-            lastMonthTask.push(task)
+            lastMonthTask.push(task);
             if (day <= 7) {
               if (TaskDay >= 1 && TaskDay <= day) {
-                lastWeekTask.push(task)
+                lastWeekTask.push(task);
               }
             } else {
               if (TaskDay >= day - 7 && TaskDay <= day) {
-                lastWeekTask.push(task)
+                lastWeekTask.push(task);
               }
             }
           }
         }
       }
-    })
+    });
     setTimeout(() => {
       this.TaskArrSubject.next({
         CurrentTasks: currTask,
@@ -126,38 +126,38 @@ export class TaskService {
         LastWeekTasks: lastWeekTask,
         LastMonthTasks: lastMonthTask,
         LastYearTasks: YearTask,
-      })
-    }, 30)
-    this.TodayTasksList = [...currTask]
+      });
+    }, 30);
+    this.TodayTasksList = [...currTask];
     // })
   }
 
   getActiveTask() {
-    return this.ActiveTask
+    return this.ActiveTask;
   }
 
   TaskSelector(id: string, time: string, status: boolean) {
-    this.taskToTimer = this.TodayTasksList.filter((task) => task._id === id)[0]
+    this.taskToTimer = this.TodayTasksList.filter((task) => task._id === id)[0];
     if (time === "0") {
-      null
+      null;
     } else {
       if (time === "00:00:00") {
-        null
+        null;
       } else {
-        this.taskToTimer.leftTime = time
+        this.taskToTimer.leftTime = time;
       }
     }
-    this.taskToTimer.active = !status
-    this.ActiveTask.status = !status
-    this.ActiveTask.taskid = id
-    this.TaskSubject.next(this.taskToTimer)
+    this.taskToTimer.active = !status;
+    this.ActiveTask.status = !status;
+    this.ActiveTask.taskid = id;
+    this.TaskSubject.next(this.taskToTimer);
   }
 
   ModalSelector(modal: string, Task: Task) {
     if ((modal = "fa-trash fas")) {
-      this.PopUpSubject.next({ status: "RemoveTask", task: Task })
+      this.PopUpSubject.next({ status: "RemoveTask", task: Task });
     } else {
-      this.PopUpSubject.next({ status: "CompleteTask", task: Task })
+      this.PopUpSubject.next({ status: "CompleteTask", task: Task });
     }
   }
 
@@ -167,15 +167,17 @@ export class TaskService {
     //   this.getTasks()
     // })
 
-    this.DummyArr.splice(parseInt(id), 1)
-    this.getTasks()
+    this.DummyArr.splice(parseInt(id), 1);
+    this.getTasks();
+    this.PopUpSubject.next({ status: "RemoveTask" });
   }
 
   getTaskUpdated(task: Task) {
-    this.http.post("http://localhost:1234/task-manager/update-task", task).subscribe((res) => {
-    })
+    this.http
+      .post("http://localhost:1234/task-manager/update-task", task)
+      .subscribe((res) => {});
   }
   ComponentSelector(component: string) {
-    this.ComponentSubject.next(component)
+    this.ComponentSubject.next(component);
   }
 }

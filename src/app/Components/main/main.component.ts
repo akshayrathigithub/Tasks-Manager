@@ -67,7 +67,9 @@ export class MainComponent implements OnInit {
 
     this.TaskArr.PopUp$.subscribe((modal: any) => {
       this.ModalSelector.status = modal.status;
-      this.ModalSelector.task = modal.task;
+      if (modal.status !== "RemoveTask") {
+        this.ModalSelector.task = modal.task;
+      }
       this.IsBlur = !this.IsBlur;
     });
 
