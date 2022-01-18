@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core"
-import { Task } from "src/app/modules/taskModule"
+import { PRIORITY, Task, TASK_STATUS } from "src/app/modules/taskModule"
 import { TaskService } from "src/app/services/task.service"
 
 @Component({
@@ -13,6 +13,9 @@ export class TodoComponent implements OnInit {
   PopClass: boolean = false
   @Input() Timer: any
   @Input() Tasks: Task[]
+  High = "fas fa-arrow-alt-circle-up"
+  Med = "fas fa-arrow-alt-circle-right"
+  Low = "fas fa-arrow-alt-circle-down"
 
   constructor(private TaskArr: TaskService) {
   }
@@ -26,16 +29,17 @@ export class TodoComponent implements OnInit {
     return `${index + 2}/1/${index + 3}/5`
   }
 
-  SetTime(id: string, time: string, status: boolean) {
+  SetTime(id: string, time: string, status: TASK_STATUS) {
     let task = this.TaskArr.getActiveTask()
-    if (task.status) {
+    console.log(task, id, "here")
+    if (task.status === TASK_STATUS.IN_PROGRESS) {
       if (task.taskid === id) {
-        this.TaskArr.TaskSelector(id, time, status)
+        this.TaskArr.TaskSelector(id, time, TASK_STATUS.PAUSED)
       } else {
         this.PopUp(0)
       }
     } else {
-      this.TaskArr.TaskSelector(id, (time = "0"), status)
+      this.TaskArr.TaskSelector(id, (time = "0"), TASK_STATUS.IN_PROGRESS)
     }
   }
 
@@ -54,5 +58,9 @@ export class TodoComponent implements OnInit {
 
   ModalCalled(icon: any, Task: Task) {
     this.TaskArr.ModalSelector(icon.attributes[2].value, Task)
+  }
+
+ get PRIORITY(){
+    return PRIORITY
   }
 }
