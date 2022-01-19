@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from "@angular/core"
+import { TASK_STATUS } from "src/app/modules/taskModule"
 import { TaskService } from "src/app/services/task.service"
 
 @Component({
@@ -18,11 +19,15 @@ export class TimerComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.ringStroke = Math.floor(3.15 * this.Timer.ring) + "px, 315px"
   }
-  TimerBtn(timer: string, id: string, status: boolean) {
+  TimerBtn(timer: string, id: string, status: TASK_STATUS) {
     if (id === "-1") {
       this.PopUp(0)
     } else {
-      this.TaskArr.TaskSelector(id, timer, status)
+      if (status === TASK_STATUS.IN_PROGRESS) {
+        this.TaskArr.TaskSelector(id, timer, TASK_STATUS.PAUSED)
+      }else {
+        this.TaskArr.TaskSelector(id, timer, TASK_STATUS.IN_PROGRESS)
+      }
     }
   }
   PopUp(I: number) {

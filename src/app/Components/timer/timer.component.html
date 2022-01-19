@@ -47,7 +47,7 @@
             <p class="alertHeader">No task selected. Select task from task list</p>
         </div>
         <div id="BtnWrapper" (click)="TimerBtn(Timer.timer, Timer.id, Timer.status)" >
-            <i [class]= "Timer.status ? 'fas fa-pause': 'fas fa-play'"></i>
+            <i [class]= "Timer.status === 'inProgress' ? 'fas fa-pause': 'fas fa-play'"></i>
         </div>
     </div>
 </div>
