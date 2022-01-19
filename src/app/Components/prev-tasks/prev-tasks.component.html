@@ -4,7 +4,7 @@
     </div>
     <div class="SearchWrapper">
         <div id="InputWrapper">
-            <input type="text" placeholder="Search Task" [(ngModel)]="SearchedTaskName"/>
+            <input type="text" placeholder="Search Task" [(ngModel)]="SearchedTaskName" (ngModelChange)="inputChanged($event)"/>
         </div>
         <div id="DropDownWrapper">
             <div (click)="DropDownClicked()" [ngStyle]="{
@@ -30,7 +30,7 @@
                 'display': toggle ? 'initial': 'none',
                 'background-color': '#2c3c56'
             }">
-            <div class="items" (click)="SetFilterStatus('Normal','fas fa-arrow-alt-circle-right')">
+            <div class="items" (click)="SetFilterStatus('Medium','fas fa-arrow-alt-circle-right')">
                 <div><i class="fas fa-arrow-alt-circle-right"></i></div>
                 <div>Normal</div>
             </div>
@@ -45,40 +45,35 @@
             </div>
         </div>
     </div>
-    <div [ngStyle]="{
-        'display': 'grid',
-        'width': '100%',
-        'grid-template-rows': 'repeat('+ Rows +', 3.5rem)',
-        'grid-template-columns': 'repeat(4, 1fr)',
-        'padding': '1rem 0.5rem 0rem 0.5rem',
-        'row-gap': '2.5px'
-    }">
-        <div class="Head">
-            <div class="first">
-                <p>Task Name</p>
-            </div>
-            <div class="second">
-                <p>Priority</p>
-            </div>
-            <div class="third">
-                <p>Date</p>
-            </div>
-            <div class="four">
-                <p>Time</p>
-            </div>
+
+    <div class="Head">
+        <div class="first">
+            <p>Task Name</p>
         </div>
-        <div     [ngStyle]="{
-            width: '100%',
-            'overflow-y': 'scroll'
-          }">
-        <div *ngFor="let task of Tasks; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
+        <div class="second">
+            <p>Priority</p>
+        </div>
+        <div class="third">
+            <p>Date</p>
+        </div>
+        <div class="four">
+            <p>Time</p>
+        </div>
+    </div>
+    
+      <div class="TaskWrapper-outer">
+        <div *ngFor="let task of prevTasksList; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
             <div class="first">
                 <div [class]="task.status === 'Completed' ? 'completed': 'incompleted'"></div>
-                <p> {{ task.name }} </p>
+                <p> {{ task.taskName }} </p>
             </div>
             <div class="second">
-                <i [class]="task.priority"></i>
-            </div>
+                <ng-container [ngSwitch]="task.priority">
+                    <i [class]="High" *ngSwitchCase="PRIORITY.HIGH"></i>
+                    <i [class]="Med" *ngSwitchCase="PRIORITY.MEDIUM"></i>
+                    <i [class]="Low" *ngSwitchDefault></i>
+                </ng-container>
+              </div>
             <div class="third">
                 <p>{{task.date}}</p>
             </div>
@@ -87,6 +82,5 @@
                 <i class="fas fa-trash" (click)="Delete(task._id)" id="Check"></i>
             </div>
         </div>
-        </div>
-    </div>
+      </div>
 </div>
