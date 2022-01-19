@@ -35,21 +35,21 @@
       <div id="Icon"><i class="fas fa-plus-circle"></i></div>
       <div id="Info">
         <p id="Header">Total</p>
-        <p id="Text">100</p>
+        <p id="Text">{{totalTasks}}</p>
       </div>
     </div>
     <div id="TaskCard">
       <div id="Icon"><i class="fas fa-check-circle"></i></div>
       <div id="Info">
         <p id="Header">Complete</p>
-        <p id="Text">100</p>
+        <p id="Text">{{completedTasks}}</p>
       </div>
     </div>
     <div id="TaskCard">
       <div id="Icon"><i class="fas fa-times-circle"></i></div>
       <div id="Info">
         <p id="Header">Incomplete</p>
-        <p id="Text">100</p>
+        <p id="Text">{{inCompleteTasks}}</p>
       </div>
     </div>
   </div>
@@ -93,7 +93,7 @@
       >
         <div
           class="items"
-          (click)="SetFilterStatus('Normal', 'fas fa-arrow-alt-circle-right')"
+          (click)="SetFilterStatus('Medium', 'fas fa-arrow-alt-circle-right')"
         >
           <div><i class="fas fa-arrow-alt-circle-right"></i></div>
           <div>Normal</div>
