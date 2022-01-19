@@ -1,55 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { forkJoin, Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { Task } from "../modules/taskModule";
+import { API_URL, PRIORITY, Task, TASK_MANAGER_ANALTYICS, TASK_STATUS } from "../modules/taskModule";
 
 @Injectable({
   providedIn: "root",
 })
 export class TaskService {
-  DummyArr = [
-    {
-      _id: "0",
-      name: "Task-1",
-      priority: "fas fa-arrow-alt-circle-down",
-      totalTime: "00:10:00",
-      leftTime: "00:10:00",
-      active: false,
-      status: "OnGoing",
-      created: "14/7/2020",
-    },
-    {
-      _id: "1",
-      name: "Task-2",
-      priority: "fas fa-arrow-alt-circle-down",
-      totalTime: "00:10:00",
-      leftTime: "00:10:00",
-      active: false,
-      status: "OnGoing",
-      created: "14/7/2020",
-    },
-    {
-      _id: "2",
-      name: "Task-3",
-      priority: "fas fa-arrow-alt-circle-down",
-      totalTime: "00:10:00",
-      leftTime: "00:10:00",
-      active: false,
-      status: "OnGoing",
-      created: "14/7/2020",
-    },
-    {
-      _id: "3",
-      name: "Task-4",
-      priority: "fas fa-arrow-alt-circle-down",
-      totalTime: "00:10:00",
-      leftTime: "00:10:00",
-      active: false,
-      status: "OnGoing",
-      created: "13/7/2020",
-    },
-  ];
-
   ComponentSubject = new Subject<String>();
   Component$ = this.ComponentSubject.asObservable();
   TaskArrSubject = new Subject<object>();
@@ -62,10 +19,10 @@ export class TaskService {
   TodayTasksList: Task[];
   ActiveTask: {
     taskid: string;
-    status: boolean;
+    status: TASK_STATUS;
   } = {
     taskid: "-1",
-    status: false,
+    status: TASK_STATUS.NOT_STARTED,
   };
 
   constructor(private http: HttpClient) {
@@ -73,7 +30,6 @@ export class TaskService {
   }
 
   setTask(Task: Task) {
-    this.DummyArr.push(Task);
     this.getTasks();
     // this.http.post("http://localhost:1234/task-manager/create-task", Task).subscribe((res) => {
     //   this.getTasks()
@@ -81,74 +37,35 @@ export class TaskService {
   }
 
   getTasks() {
-    // this.http.get("http://localhost:1234/task-manager/get-tasks").subscribe((res: any) => {
-    // const TotalTasks = [...res.posts]
-    let TotalTasks = [...this.DummyArr];
-    let currTask = [];
-    let prevTask = [];
-    let lastWeekTask = [];
-    let lastMonthTask = [];
-    let YearTask = [];
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    TotalTasks.forEach((task) => {
-      let DateInfo = task.created.split("/");
-      let TaskDay = parseInt(DateInfo[0]);
-      let TaskMonth = parseInt(DateInfo[1]);
-      let TaskYear = parseInt(DateInfo[2]);
-      if (TaskDay === day && TaskMonth === month && TaskYear === year) {
-        currTask.push(task);
-      } else {
-        prevTask.push(task);
-        if (TaskYear === year) {
-          YearTask.push(task);
-          if (TaskMonth === month) {
-            lastMonthTask.push(task);
-            if (day <= 7) {
-              if (TaskDay >= 1 && TaskDay <= day) {
-                lastWeekTask.push(task);
-              }
-            } else {
-              if (TaskDay >= day - 7 && TaskDay <= day) {
-                lastWeekTask.push(task);
-              }
-            }
-          }
-        }
-      }
-    });
-    setTimeout(() => {
+    const onGoingTask = API_URL.BASE + API_URL.FETCH_TASKS
+    const preTask = API_URL.BASE + API_URL.FETCH_PREV_TASKS
+    forkJoin(this.http.get(onGoingTask), this.http.get(preTask)).subscribe(([currTask, prevTask]: [Task[], Task[]]) => {
+      this.TodayTasksList = [...currTask];
+      const onGoingTask = [...currTask];
+      onGoingTask[0].status = TASK_STATUS.NOT_STARTED;
+      this.ActiveTask.taskid = onGoingTask[0]._id;
+      this.ActiveTask.status = onGoingTask[0].status;
+          setTimeout(() => {
       this.TaskArrSubject.next({
-        CurrentTasks: currTask,
+        CurrentTasks: onGoingTask,
         PreviousTasks: prevTask,
-        LastWeekTasks: lastWeekTask,
-        LastMonthTasks: lastMonthTask,
-        LastYearTasks: YearTask,
       });
     }, 30);
-    this.TodayTasksList = [...currTask];
-    // })
+    })
   }
 
   getActiveTask() {
     return this.ActiveTask;
   }
 
-  TaskSelector(id: string, time: string, status: boolean) {
-    this.taskToTimer = this.TodayTasksList.filter((task) => task._id === id)[0];
-    if (time === "0") {
-      null;
-    } else {
-      if (time === "00:00:00") {
-        null;
+  TaskSelector(id: string, time: string, status: TASK_STATUS) {
+    this.taskToTimer = this.TodayTasksList.find((task) => task._id === id);
+    if (time === "0" || time === "00:00:00") {
       } else {
-        this.taskToTimer.leftTime = time;
+        this.taskToTimer.timeLeft = time;
       }
-    }
-    this.taskToTimer.active = !status;
-    this.ActiveTask.status = !status;
+    this.taskToTimer.status = status;
+    this.ActiveTask.status = status;
     this.ActiveTask.taskid = id;
     this.TaskSubject.next(this.taskToTimer);
   }
@@ -167,17 +84,25 @@ export class TaskService {
     //   this.getTasks()
     // })
 
-    this.DummyArr.splice(parseInt(id), 1);
     this.getTasks();
     this.PopUpSubject.next({ status: "RemoveTask" });
   }
 
-  getTaskUpdated(task: Task) {
-    this.http
-      .post("http://localhost:1234/task-manager/update-task", task)
-      .subscribe((res) => {});
-  }
   ComponentSelector(component: string) {
     this.ComponentSubject.next(component);
+  }
+
+  filterTask(searchTerm: string, priority: PRIORITY){
+    const url = API_URL.BASE + API_URL.FILTER_TASK
+    const query = `?searchTerm=${searchTerm}&priority=${priority}`
+    const endpoint = url + query
+    return this.http.get(endpoint)
+  }
+
+  analytics(parameter: TASK_MANAGER_ANALTYICS, priority: PRIORITY){
+    const url = API_URL.BASE + API_URL.ANALYTICS
+    const query = `?parameter=${parameter}&priority=${priority}`
+    const endpoint = url + query
+    return this.http.get(endpoint)
   }
 }
