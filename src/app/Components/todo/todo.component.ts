@@ -31,7 +31,6 @@ export class TodoComponent implements OnInit {
 
   SetTime(id: string, time: string, status: TASK_STATUS) {
     let task = this.TaskArr.getActiveTask()
-    console.log(task, id, "here")
     if (task.status === TASK_STATUS.IN_PROGRESS) {
       if (task.taskid === id) {
         this.TaskArr.TaskSelector(id, time, TASK_STATUS.PAUSED)
