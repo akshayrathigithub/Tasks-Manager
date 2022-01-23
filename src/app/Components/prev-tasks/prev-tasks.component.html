@@ -64,7 +64,7 @@
       <div class="TaskWrapper-outer">
         <div *ngFor="let task of prevTasksList; index as i;" [style.grid-area]="Span(i)" class="PrevTaskWrapper">
             <div class="first">
-                <div [class]="task.status === 'Completed' ? 'completed': 'incompleted'"></div>
+                <div [class]="task.status === 'successfullyCompleted' ? 'completed': 'incompleted'"></div>
                 <p> {{ task.taskName }} </p>
             </div>
             <div class="second">

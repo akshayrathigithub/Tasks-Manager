@@ -1,3 +1,12 @@
+.TaskWrapper-outer{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 380px;
+  min-height: 100px;
+  height: auto;
+  scrollbar-width: none;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -131,7 +140,7 @@
   .BtnWrapper {
     width: 100%;
     height: 5rem;
-    padding: 12% 0px 0px 63%;
+    padding: 5% 0px 0px 63%;
   }
   .BtnFinish {
     width: 13.5rem;
@@ -284,7 +293,7 @@
   .BtnWrapper {
     width: 100%;
     height: 5rem;
-    padding: 12% 0px 0px 58%;
+    padding: 5% 0px 0px 58%;
   }
   .BtnFinish {
     width: 13.5rem;
@@ -437,7 +446,7 @@
   .BtnWrapper {
     width: 100%;
     height: 5rem;
-    padding: 12% 0px 0px 63%;
+    padding: 5% 0px 0px 63%;
   }
   .BtnFinish {
     width: 13.5rem;

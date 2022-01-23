@@ -71,21 +71,15 @@ export class TaskService {
   }
 
   ModalSelector(modal: string, Task: Task) {
-    if ((modal = "fa-trash fas")) {
-      this.PopUpSubject.next({ status: "RemoveTask", task: Task });
+    if (modal === "fa-trash fas") {
+      this.PopUpSubject.next({ status: "RemoveOnGoingTask", task: Task });
     } else {
       this.PopUpSubject.next({ status: "CompleteTask", task: Task });
     }
   }
 
   getTaskDeleted(id: string) {
-    // let Id: object = { key: id }
-    // this.http.post("http://localhost:1234/task-manager/delete-task", Id).subscribe((res) => {
-    //   this.getTasks()
-    // })
-
-    this.getTasks();
-    this.PopUpSubject.next({ status: "RemoveTask" });
+    this.PopUpSubject.next({ status: "RemovePrevTask", taskId: id });
   }
 
   ComponentSelector(component: string) {

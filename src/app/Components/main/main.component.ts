@@ -14,11 +14,7 @@ export class MainComponent implements OnInit {
   doSomething($event) {
     // this.ModalSelector.task.active = false;
   }
-  CurrTasks: Task[];
-  PrevTasks: Task[];
-  ToggleBtn: boolean = true;
-  Component: string = "Task";
-  DisplayTimer: {
+  initialDisplayValue: {
     ring: number;
     task: string;
     timer: string;
@@ -31,12 +27,18 @@ export class MainComponent implements OnInit {
     id: "-1",
     status: TASK_STATUS.NOT_STARTED,
   };
+
+  CurrTasks: Task[];
+  PrevTasks: Task[];
+  ToggleBtn: boolean = true;
+  Component: string = "Task";
+  DisplayTimer = this.initialDisplayValue
   TOTALSEC: any;
   Part: number = 0;
   TotalSec: number;
   IsBlur: boolean = false;
   ModalSelector: { status: string; task: Task } = {
-    status: "",
+    status: "Instructions",
     task: {
       _id: "",
       taskName: "",
@@ -74,8 +76,14 @@ export class MainComponent implements OnInit {
     });
 
     this.TaskArr.PopUp$.subscribe((modal: any) => {
-      this.ModalSelector.status = modal.status;
-      if (modal.status !== "RemoveTask") {
+      if (modal.status === "RemoveOnGoingTask") {
+        this.ModalSelector.task = modal.task;
+        this.ModalSelector.status = 'RemoveOnGoingTask'
+      }else if(modal.status === "RemovePrevTask"){
+        this.ModalSelector.status = 'RemovePrevTask'
+        this.ModalSelector.task._id = modal.taskId;
+      }else if (modal.status === "CompleteTask") {
+        this.ModalSelector.status = 'CompleteTask'
         this.ModalSelector.task = modal.task;
       }
       this.IsBlur = !this.IsBlur;
@@ -92,6 +100,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.IsBlur = true;
     this.TaskArr.TaskArr$.subscribe((res: any) => {
       const Tasks = [...res.CurrentTasks];
       if (Tasks.length === 0) {
@@ -136,21 +145,37 @@ export class MainComponent implements OnInit {
   }
 
   PopUpModal() {
-    this.ModalSelector.status = "";
     this.IsBlur = !this.IsBlur;
+    this.ModalSelector.status = "";
   }
 
   ModalAction(ActionType: string) {
     if (ActionType == "TimesUp") {
-      this.ModalSelector.task.status = TASK_STATUS.INCOMPLETE
+     const inCompleteTask = this.CurrTasks.find(task => task._id === this.ModalSelector.task._id);
+      inCompleteTask.status = TASK_STATUS.INCOMPLETE;
+     this.CurrTasks = this.CurrTasks.filter((task: Task) => task._id !== this.ModalSelector.task._id);
+     this.PrevTasks.splice(0, 0, inCompleteTask);
       this.PopUpModal();
+      this.DisplayTimer = this.initialDisplayValue
     } else if (ActionType === "Completed") {
-      this.ModalSelector.task.status = TASK_STATUS.SUCCESSFULLY_COMPLETED;
+      const completeTask = this.CurrTasks.find(task => task._id === this.ModalSelector.task._id);
+      completeTask.status = TASK_STATUS.SUCCESSFULLY_COMPLETED;
+     this.CurrTasks = this.CurrTasks.filter((task: Task) => task._id !== this.ModalSelector.task._id);
+     this.PrevTasks.splice(0, 0, completeTask);
       this.PopUpModal();
+      this.DisplayTimer = this.initialDisplayValue
     } else if (ActionType === "Deleted") {
-      this.TaskArr.getTaskDeleted(this.ModalSelector.task._id);
+      if(this.ModalSelector.status === "RemoveOnGoingTask"){
+        this.CurrTasks = this.CurrTasks.filter((task: Task) => task._id !== this.ModalSelector.task._id);
+      }else{
+        this.PrevTasks = this.PrevTasks.filter((task: Task) => task._id !== this.ModalSelector.task._id);
+      }
+      this.DisplayTimer = this.initialDisplayValue
       this.PopUpModal();
-    } else {
+    } else if(ActionType === "Instructions"){
+      this.PopUpModal()
+    }
+     else {
       null;
     }
   }
