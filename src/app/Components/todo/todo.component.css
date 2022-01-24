@@ -1,10 +1,14 @@
-.TaskWrapper-outer{
+.TaskWrapper-outer {
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 380px;
   min-height: 100px;
   height: auto;
   scrollbar-width: none;
+}
+.TaskWrapper-outer::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 /* 

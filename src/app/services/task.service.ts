@@ -1,7 +1,13 @@
 import { Injectable } from "@angular/core";
 import { forkJoin, Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { API_URL, PRIORITY, Task, TASK_MANAGER_ANALTYICS, TASK_STATUS } from "../modules/taskModule";
+import {
+  API_URL,
+  PRIORITY,
+  Task,
+  TASK_MANAGER_ANALTYICS,
+  TASK_STATUS,
+} from "../modules/taskModule";
 
 @Injectable({
   providedIn: "root",
@@ -37,21 +43,25 @@ export class TaskService {
   }
 
   getTasks() {
-    const onGoingTask = API_URL.BASE + API_URL.FETCH_TASKS
-    const preTask = API_URL.BASE + API_URL.FETCH_PREV_TASKS
-    forkJoin(this.http.get(onGoingTask), this.http.get(preTask)).subscribe(([currTask, prevTask]: [Task[], Task[]]) => {
-      this.TodayTasksList = [...currTask];
-      const onGoingTask = [...currTask];
-      onGoingTask[0].status = TASK_STATUS.NOT_STARTED;
-      this.ActiveTask.taskid = onGoingTask[0]._id;
-      this.ActiveTask.status = onGoingTask[0].status;
-          setTimeout(() => {
-      this.TaskArrSubject.next({
-        CurrentTasks: onGoingTask,
-        PreviousTasks: prevTask,
-      });
-    }, 30);
-    })
+    const onGoingTask = API_URL.BASE + API_URL.FETCH_TASKS;
+    const preTask = API_URL.BASE + API_URL.FETCH_PREV_TASKS;
+    forkJoin(this.http.get(onGoingTask), this.http.get(preTask)).subscribe(
+      ([currTask, prevTask]: [Task[], Task[]]) => {
+        this.TodayTasksList = [...currTask];
+        const onGoingTask = [...currTask];
+        onGoingTask[0].status = TASK_STATUS.NOT_STARTED;
+        this.ActiveTask.taskid = onGoingTask[0]._id;
+        this.ActiveTask.status = onGoingTask[0].status;
+        setTimeout(() => {
+          this.TaskArrSubject.next({
+            CurrentTasks: onGoingTask,
+            PreviousTasks: prevTask,
+          });
+        }, 30);
+      }
+    );
+
+    this.handShake();
   }
 
   getActiveTask() {
@@ -61,9 +71,9 @@ export class TaskService {
   TaskSelector(id: string, time: string, status: TASK_STATUS) {
     this.taskToTimer = this.TodayTasksList.find((task) => task._id === id);
     if (time === "0" || time === "00:00:00") {
-      } else {
-        this.taskToTimer.timeLeft = time;
-      }
+    } else {
+      this.taskToTimer.timeLeft = time;
+    }
     this.taskToTimer.status = status;
     this.ActiveTask.status = status;
     this.ActiveTask.taskid = id;
@@ -86,17 +96,25 @@ export class TaskService {
     this.ComponentSubject.next(component);
   }
 
-  filterTask(searchTerm: string, priority: PRIORITY){
-    const url = API_URL.BASE + API_URL.FILTER_TASK
-    const query = `?searchTerm=${searchTerm}&priority=${priority}`
-    const endpoint = url + query
-    return this.http.get(endpoint)
+  filterTask(searchTerm: string, priority: PRIORITY) {
+    const url = API_URL.BASE + API_URL.FILTER_TASK;
+    const query = `?searchTerm=${searchTerm}&priority=${priority}`;
+    const endpoint = url + query;
+    return this.http.get(endpoint);
   }
 
-  analytics(parameter: TASK_MANAGER_ANALTYICS, priority: PRIORITY){
-    const url = API_URL.BASE + API_URL.ANALYTICS
-    const query = `?parameter=${parameter}&priority=${priority}`
-    const endpoint = url + query
-    return this.http.get(endpoint)
+  analytics(parameter: TASK_MANAGER_ANALTYICS, priority: PRIORITY) {
+    const url = API_URL.BASE + API_URL.ANALYTICS;
+    const query = `?parameter=${parameter}&priority=${priority}`;
+    const endpoint = url + query;
+    return this.http.get(endpoint);
+  }
+
+  handShake() {
+    const moduleUrl = "/analytics?moduleName=TASK_MANAGER";
+    const url = API_URL.BASE + moduleUrl;
+    this.http.get(url).subscribe((res) => {
+      // console.log(res)
+    });
   }
 }
