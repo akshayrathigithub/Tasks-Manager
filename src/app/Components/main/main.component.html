@@ -43,7 +43,13 @@
       </div>
     </div>
   </div>
-  <div class="ModalWrapper" *ngIf="ModalSelector.status === 'RemoveOnGoingTask' || ModalSelector.status === 'RemovePrevTask'">
+  <div
+    class="ModalWrapper"
+    *ngIf="
+      ModalSelector.status === 'RemoveOnGoingTask' ||
+      ModalSelector.status === 'RemovePrevTask'
+    "
+  >
     <div class="ModalInitial">
       <div class="Icon">
         <i class="fas fa-exclamation-circle"></i>
@@ -70,25 +76,33 @@
       <div class="InstructHeader">
         <p>Welcome to Task Manager</p>
         <div class="InstructText">
-            A Simple Dummy Web App which helps in organizing and prioritizing day today tasks. The App mainly contains 4 sections:
-            <div class="InstructText">
-            1) Tasks: A Kinda Dashboard which shows todays task, with name, priority, status and amount of time left.
-            </div>
-            <div class="InstructText">
-            2) Timer: Timer shows time remaining from the current ongoing task with Pause/Resume button.
-            </div>
-            <div class="InstructText">
-            3) Analytics: Shows past history of the tasks on weekly, monthly and yearly basics with additional priorty filter.
-            </div>
-            <div class="InstructText">
-            4) Prev Tasks: Completed/Incompleted tasks
-            </div>
-            <div class="InstructText">
-              5) New Tasks: 
-              </div>
+          A Simple Dummy Web App which helps in organizing and prioritizing day
+          today tasks. The App mainly contains 4 sections:
         </div>
-        <div class="ModalBtn" (click)="ModalAction('Instructions')">
-          <p>Done!</p>
+        <div class="InstructText">
+          1) Tasks: A Kinda Dashboard which shows todays task, with name,
+          priority, status and amount of time left.
+        </div>
+        <div class="InstructText">
+          2) Timer: Timer shows time remaining from the current ongoing task
+          with Pause/Resume button.
+        </div>
+        <div class="InstructText">
+          3) Analytics: Shows past history of the tasks on weekly, monthly and
+          yearly basics with additional priorty filter.
+        </div>
+        <div class="InstructText">
+          4) Prev Tasks: A List of Completed/Incompleted tasks with search and
+          filter options.
+        </div>
+        <div class="InstructText BottomText">
+          The App is connected to the Database and new tasks are generated
+          randomly every one hour.
+        </div>
+        <div class="InstructBtnWrapper">
+          <div class="InstructBtn" (click)="ModalAction('Instructions')">
+            <p>Proceed</p>
+          </div>
         </div>
       </div>
     </div>

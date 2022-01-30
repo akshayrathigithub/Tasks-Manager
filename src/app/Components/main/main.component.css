@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: column;
   width: 700px;
-  height: 500px;
+  height: 460px;
   background-color: #242c4c;
   border: solid 2px #f66fb3;
   border-radius: 12px;
@@ -46,18 +46,52 @@
 }
 
 .InstructHeader {
-  width: 100%;
+  width: 90%;
   font-size: 20px;
   font-weight: 600;
-  margin: 40px 0% 0% 30px;
+  margin: 40px 0% 0px 30px;
+}
+
+.InstructHeader p {
+  margin-bottom: 20px;
 }
 
 .InstructText {
+  display: block;
   font-size: 16px;
   font-weight: 500;
-  margin-top: 8px;
+  margin-top: 10px;
   color: #bbb2cf;
 }
+
+.BottomText {
+  margin-top: 20px;
+}
+
+.InstructBtnWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.InstructBtn {
+  width: 30%;
+  height: 2.5rem;
+  background-color: #f66fb3;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.InstructBtn p {
+  margin: 0px;
+}
+
 .Btn {
   width: 5rem;
   background-color: red;
@@ -353,6 +387,21 @@
   .Active .Text {
     border-top: 4px solid #f66fb3;
   }
+
+  .ModalInstructions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 520px;
+    background-color: #242c4c;
+    border: solid 2px #f66fb3;
+    border-radius: 12px;
+    z-index: 3;
+    color: white;
+    box-shadow: 0 0 25px 0px #1b2838;
+    transition: all 2s ease-in-out;
+  }
 }
 
 /* 
@@ -434,5 +483,28 @@
 
   .Active .Text {
     border-top: 4px solid #f66fb3;
+  }
+
+  .InstructBtnWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .ModalInstructions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 520px;
+    background-color: #242c4c;
+    border: solid 2px #f66fb3;
+    border-radius: 12px;
+    z-index: 3;
+    color: white;
+    box-shadow: 0 0 25px 0px #1b2838;
+    transition: all 2s ease-in-out;
   }
 }
